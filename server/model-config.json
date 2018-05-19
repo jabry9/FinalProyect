@@ -34,5 +34,45 @@
   "Role": {
     "dataSource": "mysqlDs",
     "public": false
+  },
+  "Usuario": {
+    "dataSource": "mysqlDs",
+    "public": true
+  },
+  "Empresa": {
+    "dataSource": "mysqlDs",
+    "public": true
+  },
+  "Category": {
+    "dataSource": "mysqlDs",
+    "public": true
+  },
+  "ProfilerCategory": {
+    "dataSource": "mysqlDs",
+    "public": true
+  },
+  "Anuncio": {
+    "dataSource": "mysqlDs",
+    "public": true
+  },
+  "Multimedia": {
+    "dataSource": "mysqlDs",
+    "public": true
+  },
+  "Solicitud": {
+    "dataSource": "mysqlDs",
+    "public": true
+  },
+  "Rating": {
+    "dataSource": "mysqlDs",
+    "public": true
+  },
+  "Denuncias": {
+    "dataSource": "mysqlDs",
+    "public": true
+  },
+  "Chat": {
+    "dataSource": "mysqlDs",
+    "public": true
   }
 }

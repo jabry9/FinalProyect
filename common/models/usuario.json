@@ -1,0 +1,34 @@
+{
+  "name": "Usuario",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "telephone": {
+      "type": "number"
+    },
+    "gender": {
+      "type": "string"
+    },
+    "photo": {
+      "type": "string"
+    },
+    "location": {
+      "type": "geopoint",
+      "required": true
+    },
+    "rating": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

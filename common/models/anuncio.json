@@ -1,0 +1,42 @@
+{
+  "name": "Anuncio",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "titulo": {
+      "type": "string",
+      "required": true
+    },
+    "presupMAX": {
+      "type": "number",
+      "required": true
+    },
+    "materialsINC": {
+      "type": "boolean",
+      "required": true
+    },
+    "location": {
+      "type": "geopoint",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "required": true
+    },
+    "date": {
+      "type": "date",
+      "required": true
+    },
+    "visitas": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

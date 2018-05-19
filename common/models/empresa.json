@@ -1,0 +1,43 @@
+{
+  "name": "Empresa",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "manitas": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    },
+    "telephone": {
+      "type": "number"
+    },
+    "logo": {
+      "type": "string"
+    },
+    "location": {
+      "type": "geopoint",
+      "required": true
+    },
+    "credits": {
+      "type": "number",
+      "required": true
+    },
+    "rating": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
