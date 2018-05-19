@@ -16,7 +16,26 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "solicitud": {
+      "type": "belongsTo",
+      "model": "Solicitud",
+      "foreignKey": "",
+      "imageable": {
+        "type": "belongsTo",
+        "polymorphic": true
+      }
+    },
+    "anuncio": {
+      "type": "belongsTo",
+      "model": "Anuncio",
+      "foreignKey": "",
+      "imageable": {
+        "type": "belongsTo",
+        "polymorphic": true
+      }
+    }
+  },
   "acls": [],
   "methods": {}
 }

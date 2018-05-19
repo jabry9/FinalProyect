@@ -12,7 +12,16 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "parentCategory": {
+      "type": "belongsTo",
+      "model": "Category",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
   "acls": [],
   "methods": {}
 }

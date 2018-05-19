@@ -37,7 +37,25 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "anuncios": {
+      "type": "hasMany",
+      "model": "Anuncio",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      },
+      "through": "Solicitud"
+    },
+    "profiler": {
+      "type": "belongsTo",
+      "model": "ProfilerCategory",
+      "foreignKey": "profiler",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
   "acls": [],
   "methods": {}
 }

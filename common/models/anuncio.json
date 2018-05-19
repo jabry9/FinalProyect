@@ -36,7 +36,51 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "usuario": {
+      "type": "belongsTo",
+      "model": "Usuario",
+      "foreignKey": "",
+      "imageable": {
+        "type": "belongsTo",
+        "polymorphic": true
+      }
+    },
+    "empresa": {
+      "type": "belongsTo",
+      "model": "Empresa",
+      "foreignKey": "",
+      "imageable": {
+        "type": "belongsTo",
+        "polymorphic": true
+      }
+    },
+    "empresas": {
+      "type": "hasMany",
+      "model": "Empresa",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      },
+      "through": "Solicitud"
+    },
+    "categories": {
+      "type": "hasOne",
+      "model": "Category",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "solicitudAcept": {
+      "type": "belongsTo",
+      "model": "Solicitud",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
   "acls": [],
   "methods": {}
 }

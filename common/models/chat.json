@@ -16,7 +16,34 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "usuario": {
+      "type": "belongsTo",
+      "model": "Usuario",
+      "foreignKey": "",
+      "imageable": {
+        "type": "belongsTo",
+        "polymorphic": true
+      }
+    },
+    "empresa": {
+      "type": "belongsTo",
+      "model": "Empresa",
+      "foreignKey": "",
+      "imageable": {
+        "type": "belongsTo",
+        "polymorphic": true
+      }
+    },
+    "solicitud": {
+      "type": "belongsTo",
+      "model": "Solicitud",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
   "acls": [],
   "methods": {}
 }

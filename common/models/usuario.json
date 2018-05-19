@@ -28,7 +28,16 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "anuncios": {
+      "type": "hasMany",
+      "model": "Anuncio",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
   "acls": [],
   "methods": {}
 }
