@@ -1,24 +1,6 @@
 const direction = 'http://localhost:3000/api/'; 
 let coord = '';
 
-$(document).ready(function () { 
-    currentLocation();
-
-    $("#loginButtonJW").click(function(){
-        logIn('a@a.a', 'a', function(is){
-            if (is)
-                getCurrentUserLogged(function(data){
-                    console.log(data);
-                });
-        });/*
-        console.log(getFromSessionStorage('access_token')+'--------------');
-        logOut(function(){});*/
-
-
-    });
-
-})
-
 const setSessionStorage = (cname, cvalue) => {
     sessionStorage.setItem(cname, cvalue);
 }
@@ -31,21 +13,42 @@ const removeFromSessionStorage = (cname) => {
     sessionStorage.removeItem(cname);
 }
 
+
 const logIn = (nameOrEmail, password, cb) => {
 
     alredyLogged(function(isLogged){
-        if (false === isLogged)
-            $.post(direction+'Usuarios/login',
-            {
-                email: nameOrEmail,
-                password: password
+        if (false === isLogged){
+            
+               /* var fd = new FormData();
+                fd.append("email", nameOrEmail);
+                fd.append("password", password);
+
+                $.ajax({
+                    type: "POST",
+                    url: direction+'Usuarios/login',
+                    contentType : "text/xml",
+                    data: fd,
+                    success: function(data,status,xhr){
+                        alert("Hurrah!");
+                    },
+                    error: function(xhr, status, error){
+                        alert("Error!" + xhr.status);
+                    },
+                    dataType: "xml"
+                });*/
+
+                $.post(direction+'Usuarios/login',
+                {
+                    email: nameOrEmail,
+                    password: password
+                }
+                ).then(function(data) {
+                    setSessionStorage('access_token', data.id);
+                    cb(true);
+                }).fail(function(xhr, status, error){
+                    cb(false);
+                });
             }
-            ).then(function(data) {
-                setSessionStorage('access_token', data.id);
-                cb(true);
-            }).fail(function(error){
-                cb(false);
-            });
         else
             cb(true);
     });
@@ -91,7 +94,7 @@ const getCurrentUserLogged = (cb) => {
         $.get(direction+'Usuarios/getUser', {
             access_token: getFromSessionStorage('access_token')
         }).then(function(data) {
-            cb(data);
+            cb(data.User);
         }).fail(function(){
             cb(null);
         });
