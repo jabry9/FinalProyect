@@ -41,18 +41,8 @@
       "type": "belongsTo",
       "model": "Usuario",
       "foreignKey": "",
-      "imageable": {
-        "type": "belongsTo",
-        "polymorphic": true
-      }
-    },
-    "empresa": {
-      "type": "belongsTo",
-      "model": "Empresa",
-      "foreignKey": "",
-      "imageable": {
-        "type": "belongsTo",
-        "polymorphic": true
+      "options": {
+        "nestRemoting": true
       }
     },
     "empresas": {
@@ -64,12 +54,12 @@
       },
       "through": "Solicitud"
     },
-    "categories": {
+    "categoria": {
       "type": "hasOne",
       "model": "Category",
       "foreignKey": "",
       "options": {
-        "nestRemoting": true
+        "nestRemoting": false
       }
     },
     "solicitudAcept": {
@@ -81,6 +71,14 @@
       }
     }
   },
-  "acls": [],
+  "acls": [
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "create"
+    }
+  ],
   "methods": {}
 }
