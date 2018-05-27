@@ -1,17 +1,21 @@
 const direction = 'http://localhost:3000/api/'; 
-
-const coord;
+let coord = '';
 
 $(document).ready(function () { 
-
-    
     currentLocation();
+
     $("#loginButtonJW").click(function(){
+        logIn('a@a.a', 'a', function(is){
+            if (is)
+                getCurrentUserLogged(function(data){
+                    console.log(data);
+                });
+        });/*
+        console.log(getFromSessionStorage('access_token')+'--------------');
+        logOut(function(){});*/
 
 
     });
-
-
 
 })
 
@@ -27,58 +31,74 @@ const removeFromSessionStorage = (cname) => {
     sessionStorage.removeItem(cname);
 }
 
-const login = (nameOrEmail, password) => {
+const logIn = (nameOrEmail, password, cb) => {
 
-    let hisLogged = true;
-
-    if (false === alredyLogged()){
-        $.post(direction+'Usuarios/login',
-        {
-            email: nameOrEmail,
-            password: password
-        }
-        ).then(function(data) {
-            token = data.id;
-            setSessionStorage('access_token', data.id);
-        }).fail(function(error){
-            console.log(error);
-            hisLogged = false;
-        });
-    }
-
-    return hisLogged;
+    alredyLogged(function(isLogged){
+        if (false === isLogged)
+            $.post(direction+'Usuarios/login',
+            {
+                email: nameOrEmail,
+                password: password
+            }
+            ).then(function(data) {
+                setSessionStorage('access_token', data.id);
+                cb(true);
+            }).fail(function(error){
+                cb(false);
+            });
+        else
+            cb(true);
+    });
 
 }
 
-const alredyLogged = () => {
+const logOut = (cb) => {
 
-    let logged = false;
+    alredyLogged(function(is){
+        if (is)
+            $.post(direction+'Usuarios/logout?access_token='+getFromSessionStorage('access_token')
+            ).then(function(data) {
+                removeFromSessionStorage('access_token');
+                cb(true);
+            }).fail(function(error){
+                cb(false);
+            });
+        else
+            cb(true);
+    });
 
-    if (null !== getFromSessionStorage('access_token')){
-        $.get(direction+'Usuarios/getUser', {
-            access_token: getFromSessionStorage('access_token')
-        }).then(function() {
-            logged = true;
-        }).fail(function(){
-            removeFromSessionStorage('access_token'); 
-        });
-    }
-    
-    return logged;
+
 }
 
-const getCurrentUserLogged = () => {
+const alredyLogged = (cb) => {
 
-    let user = null;
-
-    if (alredyLogged())
+    if (null != getFromSessionStorage('access_token')){
         $.get(direction+'Usuarios/getUser', {
             access_token: getFromSessionStorage('access_token')
         }).then(function(data) {
-            user = data;
+            cb(true);
+        }).fail(function(){
+            cb(false);
+            removeFromSessionStorage('access_token'); 
         });
+    }else 
+        cb(false);
+}
 
-    return user;
+const getCurrentUserLogged = (cb) => {
+    alredyLogged(function(is){
+        if (is)
+        $.get(direction+'Usuarios/getUser', {
+            access_token: getFromSessionStorage('access_token')
+        }).then(function(data) {
+            cb(data);
+        }).fail(function(){
+            cb(null);
+        });
+    else
+        cb(null);
+    })
+
 }
 
 const currentLocation = () => {
