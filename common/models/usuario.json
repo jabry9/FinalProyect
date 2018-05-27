@@ -45,6 +45,13 @@
       "principalId": "$authenticated",
       "permission": "ALLOW",
       "property": "getUser"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "getMyAds"
     }
   ],
   "methods": {
@@ -70,6 +77,32 @@
       "http": [
         {
           "path": "/getUser",
+          "verb": "get"
+        }
+      ]
+    },
+    "getMyAds": {
+      "accepts": [
+        {
+          "arg": "context",
+          "type": "object",
+          "http": {
+            "source": "context"
+          }
+        }
+      ],
+      "returns": [
+        {
+          "arg": "Ads",
+          "type": "array",
+          "root": false,
+          "description": "todos los anuncios del usuario loggeado"
+        }
+      ],
+      "description": "todos los anuncios del usuario loggeado",
+      "http": [
+        {
+          "path": "/getMyAds",
           "verb": "get"
         }
       ]

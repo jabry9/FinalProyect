@@ -7,21 +7,29 @@ $(document).ready(function () {
 
 
     $("#loginButtonJW").click(function(){
-        logOut(function(){});
+        //logOut(function(){});
         //logIn('a@a.a', 'a', function(){}); 
 
-        /*logIn('a@a.a', 'a', function(seHaCreadoBien){
+        logIn('a@a', 'a', function(seHaCreadoBien){
             if (seHaCreadoBien)
                 console.log('Si');
             else
                 console.log('No');
 
-        }); */
+                getMyAds(function(da){
+                    console.log(da)
+                });
+
+        }); 
         
-        //console.log(getFromSessionStorage('access_token'));
+        /*console.log(getFromSessionStorage('access_token'));*/
         //logOut(function(){});
 
         //$(location).attr('href', './index.html')
+
+        /*insertUser("ne", coord, "ume", "eml@mail.sd", "paword", function(isCreatedOk) {
+            console.log(isCreatedOk);
+        });*/
     });
 
 })

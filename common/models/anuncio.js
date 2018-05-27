@@ -7,8 +7,6 @@ module.exports = function(Anuncio) {
         context.args.data.usuarioId = context.req.accessToken.userId;
         context.args.data.date = new Date();
 
-        
-
         Anuncio.app.models.Category.findById(context.args.data.categoryId, function (err, category) {
             if (err)
                 next(err);

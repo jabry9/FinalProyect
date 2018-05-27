@@ -15,7 +15,16 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "anuncio": {
+      "type": "belongsTo",
+      "model": "Anuncio",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
   "acls": [],
   "methods": {}
 }

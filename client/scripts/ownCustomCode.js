@@ -1,5 +1,5 @@
 const direction = 'http://localhost:3000/api/'; 
-let coord = '';
+let coord = null;
 
 const setSessionStorage = (cname, cvalue) => {
     sessionStorage.setItem(cname, cvalue);
@@ -18,25 +18,6 @@ const logIn = (nameOrEmail, password, cb) => {
 
     alredyLogged(function(isLogged){
         if (false === isLogged){
-            
-               /* var fd = new FormData();
-                fd.append("email", nameOrEmail);
-                fd.append("password", password);
-
-                $.ajax({
-                    type: "POST",
-                    url: direction+'Usuarios/login',
-                    contentType : "text/xml",
-                    data: fd,
-                    success: function(data,status,xhr){
-                        alert("Hurrah!");
-                    },
-                    error: function(xhr, status, error){
-                        alert("Error!" + xhr.status);
-                    },
-                    dataType: "xml"
-                });*/
-
                 $.post(direction+'Usuarios/login',
                 {
                     email: nameOrEmail,
@@ -104,6 +85,22 @@ const getCurrentUserLogged = (cb) => {
 
 }
 
+const getMyAds = (cb) => {
+    alredyLogged(function(is){
+        if (is)
+        $.get(direction+'Usuarios/getMyAds', {
+            access_token: getFromSessionStorage('access_token')
+        }).then(function(data) {
+            cb(data.Ads);
+        }).fail(function(){
+            cb(null);
+        });
+    else
+        cb(null);
+    })
+
+}
+
 const currentLocation = () => {
     if (navigator.geolocation) {
         return navigator.geolocation.getCurrentPosition(setCoord);
@@ -116,10 +113,16 @@ const setCoord = (position) => {
     coord = position;
 }
 
-const insertUser = (name, coord, userName, email, password) => {
+const insertUser = (name, coord, userName, email, password, cb) => {
 
-    let insertedOK = false;
-
+    if (null === coord) {
+        coord = {
+            coords: {
+                latitude: 0,
+                longitude: 0
+            }
+        };
+    }
      $.post(direction+'Usuarios',
         {
         name: name,
@@ -132,15 +135,13 @@ const insertUser = (name, coord, userName, email, password) => {
         password: password
         }
     ).then(function() {
-       insertedOK = true;
+       cb(true);
+    }).fail(function(){
+        cb(false);
     });
-
-    return insertedOK;
 }
 
-const insertAd = (title, presupMAX, materialsINC, coord, description, categoryId) => {
-
-    let insertedOK = false;
+const insertAd = (title, presupMAX, materialsINC, coord, description, categoryId, cb) => {
 
     if (alredyLogged())
         $.post(direction+'Anuncios?access_token='+getFromSessionStorage('access_token'),
@@ -156,9 +157,8 @@ const insertAd = (title, presupMAX, materialsINC, coord, description, categoryId
             description: description
         }
         ).then(function() {
-            insertedOK = true;
-        });
-
-    return insertedOK;
-
+            cb(true);
+         }).fail(function(){
+             cb(false);
+         });
 }
