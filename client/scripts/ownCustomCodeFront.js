@@ -12,7 +12,7 @@ $(document).ready(function () {
 
         logIn('a@a', 'a', function(seHaCreadoBien){
             if (seHaCreadoBien)
-                console.log('Si');
+                $(location).attr('href', './index.html');
             else
                 console.log('No');
 

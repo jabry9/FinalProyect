@@ -23,4 +23,13 @@ module.exports = function(Anuncio) {
         })
         
     });
+
+
+    Anuncio.GetByPaginatione = function(title, category, page, adsPerPage, callback) {
+        var ads;
+        Anuncio.find({where:{}}, function(data){
+
+        });
+        callback(null, ads);
+      };
 };

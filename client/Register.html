@@ -31,7 +31,6 @@
     
 <div class="header header-dark">
     <a href="index.html" class="header-logo">CUE<span class="color-red-dark">NTA</span></a>
-    <div id="modificar">www</div>
     <a href="#" class="header-icon header-icon-1 close-sidebar-mask"></a>
     <a href="#" class="header-icon header-icon-1 open-all-sidebar">
         <i class="ion-ios-arrow-left"></i>  
@@ -72,8 +71,9 @@
                           
         <div class="content half-bottom half-top">
             <div class="home-tabs">
-                <a class="activate-tab-1 active-home-tab" href="#">Iniciar Sesion</a>
-                <a class="activate-tab-2" href="#">Registrar</a>
+                <a class="activate-tab-1 active-home-tab" href="#">Usuario</a>
+                <a class="activate-tab-2" href="#">Empresa</a>
+                <a class="activate-tab-3" href="#">Register</a>
                 <!-- <a class="activate-tab-3" href="#">Cards L</a> -->
                 <div class="clear"></div>
             </div>
@@ -87,7 +87,7 @@
                     <!-- <a href="#" class="page-login-logo"><img class="preload-image" data-original="images/preload-logo.png"  src="images/empty.png"></a> -->
                     <div class="page-login-input">
                         <i class="login-icon ion-person"></i>
-                        <input type="text" value="Username" onfocus="if (this.value=='Username') this.value = ''" onblur="if (this.value=='') this.value = 'Username'">
+                        <input type="text" value="Email Or NickName" onfocus="if (this.value=='Username') this.value = ''" onblur="if (this.value=='') this.value = 'Username'">
                     </div>                
                     <div class="page-login-input">
                         <i class="login-icon ion-android-lock"></i>
@@ -101,21 +101,55 @@
         
                     <a href="#" id="loginButtonJW" class="button button-green button-icon button-full half-top full-bottom"><i class="ion-log-in"></i>Login</a>
         
-                    <div class="decoration"></div>
-        
-                    <a href="#" class="button button-icon button-full facebook-bg"><i class="ion-social-facebook"></i>Login with Facebook</a>
-                    <a href="#" class="button button-icon button-full twitter-bg"><i class="ion-social-twitter"></i>Login with Twitter</a>
-                    <a href="#" class="button button-icon button-full google-bg"><i class="ion-social-googleplus"></i>Login with Google +</a>
-                    <div class="decoration full-top"></div>
-        
-                    <a href="#" class="button button-blue button-icon button-full half-top full-bottom"><i class="ion-person-add"></i>Create Account</a>           
+       
                 </div>
             </div>
             <div class="decoration"></div>
         </div>
         
-        <div class="content-fullscreen" id="tab-2">
-           
+        <div class="content" id="tab-2">
+            <div class="thumb-layout">
+               
+
+                <div class="page-login content full-bottom">
+                    <!-- <a href="#" class="page-login-logo"><img class="preload-image" data-original="images/preload-logo.png"  src="images/empty.png"></a> -->
+                    <div class="page-login-input">
+                        <i class="login-icon ion-person"></i>
+                        <input type="text" value="Email Or NickName" onfocus="if (this.value=='Username') this.value = ''" onblur="if (this.value=='') this.value = 'Username'">
+                    </div>                
+                    <div class="page-login-input">
+                        <i class="login-icon ion-android-lock"></i>
+                        <input type="password" value="password" onfocus="if (this.value=='password') this.value = ''" onblur="if (this.value=='') this.value = 'password'">
+                    </div>
+                    <div class="page-login-links">
+                        <a href="#" class="page-login-forgot"><i class="ion-ios-eye"></i>Forgot Credentials</a>
+                        <a href="#" class="page-login-create">Create Accoueent<i class="ion-log-in"></i></a>
+                        <div class="clear"></div>
+                    </div>            
+        
+                    <a href="#" id="loginButtonJW" class="button button-green button-icon button-full half-top full-bottom"><i class="ion-log-in"></i>Login</a>
+        
+       
+                </div>
+            </div>
+            <div class="decoration"></div>
+        </div>
+
+
+        <div class="content-fullscreen" id="tab-3">
+                <div id="page-content" class="header-clear">
+                        <div id="page-content-scroll">
+
+            <div class="content half-bottom half-top">
+                <div class="home-tabs">
+                    <a class="activate-tab-4 active-home-tab" href="#">Usuario</a>
+                    <a class="activate-tab-5" href="#">Empresa</a>
+                    <!-- <a class="activate-tab-3" href="#">Cards L</a> -->
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="content" id="tab-4">
+                <div class="thumb-layout">
 
             <div class="page-login content">
                 <!-- <a href="#" class="page-login-logo"><img class="preload-image" data-original="images/preload-logo.png" alt="img" src="images/empty.png"></a> -->
@@ -126,7 +160,7 @@
     
                 <div class="page-login-input">
                     <i class="login-icon ion-at"></i>
-                    <input type="text" value="Email Address" onfocus="if (this.value=='Email Address') this.value = ''" onblur="if (this.value=='') this.value = 'Email Address'">
+                    <input type="text" value="Email" onfocus="if (this.value=='Email Address') this.value = ''" onblur="if (this.value=='') this.value = 'Email Or NickName'">
                 </div>                     
                 <div class="page-login-input">
                     <i class="login-icon ion-ios-calendar-outline"></i>
@@ -138,20 +172,49 @@
                 </div>
     
                 <a href="#" class="button button-green button-icon button-full half-top full-bottom"><i class="ion-log-in"></i>Create Account</a>
-    
-                <div class="decoration"></div>
-    
-                <a href="#" class="button button-icon button-full facebook-bg"><i class="ion-social-facebook"></i>Signup with Facebook</a>
-                <a href="#" class="button button-icon button-full twitter-bg"><i class="ion-social-twitter"></i>Signup with Twitter</a>
-                <a href="#" class="button button-icon button-full google-bg"><i class="ion-social-googleplus"></i>Signup with Google +</a>
-    
-                <div class="decoration full-top"></div>
-    
+
                 <a href="#" class="button button-blue button-icon button-full half-top full-bottom"><i class="ion-person"></i>Login Here</a>           
             </div>
 
+            </div>
+            <div class="decoration"></div>
+        </div>
+
+        <div class="content" id="tab-5">
+                <div class="thumb-layout">
+
+            <div class="page-login content">
+                <!-- <a href="#" class="page-login-logo"><img class="preload-image" data-original="images/preload-logo.png" alt="img" src="images/empty.png"></a> -->
+                <div class="page-login-input">
+                    <i class="login-icon ion-person"></i>
+                    <input type="text" value="Usernamttte" onfocus="if (this.value=='Username') this.value = ''" onblur="if (this.value=='') this.value = 'Username'">
+                </div>                   
+    
+                <div class="page-login-input">
+                    <i class="login-icon ion-at"></i>
+                    <input type="text" value="Email" onfocus="if (this.value=='Email Address') this.value = ''" onblur="if (this.value=='') this.value = 'Email Or NickName'">
+                </div>                     
+                <div class="page-login-input">
+                    <i class="login-icon ion-ios-calendar-outline"></i>
+                    <input class="set-today" type="date">                
+                </div>                
+                <div class="page-login-input full-bottom">
+                    <i class="login-icon ion-locked"></i>
+                    <input type="password" value="password" onfocus="if (this.value=='password') this.value = ''" onblur="if (this.value=='') this.value = 'password'">
+                </div>
+    
+                <a href="#" class="button button-green button-icon button-full half-top full-bottom"><i class="ion-log-in"></i>Create Account</a>
+
+                <a href="#" class="button button-blue button-icon button-full half-top full-bottom"><i class="ion-person"></i>Login Here</a>           
+            </div>
+
+            </div>
+            <div class="decoration"></div>
+        </div>
         </div>        
-        
+          </div>
+        </div>     
+    
        
         
         <div class="footer footer-dark">

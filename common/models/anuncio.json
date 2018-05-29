@@ -80,5 +80,61 @@
       "property": "create"
     }
   ],
-  "methods": {}
+  "methods": {
+    "GetByPaginatione": {
+      "accepts": [
+        {
+          "arg": "title",
+          "type": "string",
+          "required": true,
+          "description": "title of ad",
+          "http": {
+            "source": "query"
+          }
+        },
+        {
+          "arg": "category",
+          "type": "number",
+          "required": true,
+          "description": "category",
+          "http": {
+            "source": "query"
+          }
+        },
+        {
+          "arg": "page",
+          "type": "number",
+          "required": true,
+          "description": "number of page",
+          "http": {
+            "source": "query"
+          }
+        },
+        {
+          "arg": "adsPerPage",
+          "type": "number",
+          "required": true,
+          "description": "ads per pager are required",
+          "http": {
+            "source": "query"
+          }
+        }
+      ],
+      "returns": [
+        {
+          "arg": "ads",
+          "type": "array",
+          "root": true,
+          "description": "All ads in this page"
+        }
+      ],
+      "description": "Get ads by paginatione given page and ads per page",
+      "http": [
+        {
+          "path": "/getByPaginatione",
+          "verb": "get"
+        }
+      ]
+    }
+  }
 }
