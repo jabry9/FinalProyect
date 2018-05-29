@@ -7,7 +7,7 @@ module.exports = function(Anuncio) {
         context.args.data.usuarioId = context.req.accessToken.userId;
         context.args.data.date = new Date();
 
-        Anuncio.app.models.Category.findById(context.args.data.categoryId, function (err, category) {
+        Anuncio.app.models.Category.findById(context.args.data.categoriaId, function (err, category) {
             if (err)
                 next(err);
             
@@ -27,8 +27,8 @@ module.exports = function(Anuncio) {
 
     Anuncio.GetByPaginatione = function(title, category, page, adsPerPage, callback) {
         var ads;
-        Anuncio.find({where:{}}, function(data){
-
+        Anuncio.find({where: {titulo: { like: "%"+title+"%" }, categoriaId: category }, limit: adsPerPage, offset: ((page-1)*adsPerPage)}, function(data){
+            console.log(data);
         });
         callback(null, ads);
       };
