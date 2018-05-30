@@ -18,6 +18,7 @@
 <script type="text/javascript" src="scripts/custom.js"></script>
 <script type="text/javascript" src="scripts/ownCustomCode.js"></script>
 <script type="text/javascript" src="scripts/ownCustomCodeFront.js"></script>
+
 </head>
 
 <body>
@@ -28,8 +29,9 @@
 </div>
     
 <div class="header header-dark">
-    <a href="index.html" class="header-logo">NOM<span class="color-red-dark">BRE</span></a>
-    <a href="Solicitudes.html" class="header-icon header-icon-1 open-all-sidebar">
+    <a href="index.html" class="header-logo">LO<span class="color-red-dark">GIN</span></a>
+    <a href="#" class="header-icon header-icon-1 close-sidebar-mask"></a>
+    <a href="#" class="header-icon header-icon-1 open-all-sidebar">
         <i class="ion-ios-arrow-left"></i>  
     </a>
 </div>
@@ -37,14 +39,14 @@
 <!-- Main Small Icon Sidebar -->
 <div class="sidebar-menu sidebar-dark">
     <div class="sidebar-menu-scroll">
-        a href="index.html"><i class="ion-ios-star-outline"></i><em>Actualizar</em></a>       
+        <a href="index.html"><i class="ion-ios-star-outline"></i><em>Actualizar</em></a>       
         <a href="Publish Ad 1.html"><i class="ion-ios-list-outline"></i><em>Publicar</em></a>       
         <a href="profile.html"><i class="ion-ios-person-outline"></i><em>Mi Perfil</em></a>      
         <a href="Mis-mensajes.html"><i class="ion-ios-email-outline"></i><em>Mensajes</em></a>       
         <a href="Mis-anuncios.html"><i class="ion-ios-compose-outline"></i><em>Mis Anuncios</em></a>
-        <a class="current-menu" href="Solicitudes.html"><i class="ion-ios-cart-outline"></i><em>Solicitudes</em></a>
+        <a href="Solicitudes.html"><i class="ion-ios-cart-outline"></i><em>Solicitudes</em></a>
         <a href="Mis-favoritos.html"><i class="ion-ios-star-outline"></i><em>Mis Favoritos</em></a>       
-        <a data-submenus="sub1" href="#"><i class="ion-ios-gear-outline"></i><em>Configuracion</em></a> 
+        <a class="current-menu" data-submenus="sub1" href="#"><i class="ion-ios-gear-outline"></i><em>Configuracion</em></a>
     </div>
 </div>
 
@@ -52,10 +54,10 @@
 <div class="submenu submenu-dark" id="sub1">
     <div class="submenu-scroll">
         <a class="close-sidebar" href="#"><i class="ion-ios-close-empty"></i><em>Cerrar</em></a>              
-        <a href="Login.html"><i class="ion-ios-unlocked-outline"></i><em>Iniciar Sesion</em></a>
-        <a href="Register.html"><i class="ion-ios-unlocked-outline"></i><em>Registrar</em></a>         
+        <a class="active-menu"  href="Login.html"><i class="ion-ios-unlocked-outline"></i><em>Iniciar Sesion</em></a>
+        <a  href="Register.html"><i class="ion-ios-unlocked-outline"></i><em>Registrar</em></a>       
         <a href="Notificacion.html"><i class="ion-ios-bell-outline"></i><em>Notificaciones</em></a>
-        <a href="#" class="logOutButtonJWClass" ><i class="ion-ios-locked-outline"></i><em>Cerrar Sesion</em></a>
+        <a href="#" class="logOutButtonJWClass"><i class="ion-ios-locked-outline"></i><em>Cerrar Sesion</em></a>
         <a href="#"><i class="ion-help"></i><em>Ayuda</em></a>        
         <a class="close-sidebar" href="#"><i class="ion-ios-close-empty"></i><em>Cerrar</em></a>  
     </div>
@@ -65,87 +67,76 @@
             
 <div id="page-content" class="header-clear">
     <div id="page-content-scroll">
-        <div class="content">
-            <h1 class="thin center-text">Descripcion</h1>
-            <p class="center-boxed-text center-text">
-                Simple code is worthless without an elegant design to match it's simplicity. A
-                readable code is beautiful but it becomes elegant when the design matches to a pixel
-                perfect aligned custom built grid.
-            </p>      
-        </div>    
-
-        <div class="content full-bottom">
-            <div class="page-invoice">        
-                <div class="invoice-body full-bottom">
-                    <h4 class="invoice-header">
-                        <strong class="color-green-dark">
-                        <i class="ion-checkmark"></i>Approved</strong> 
-                        15 August 2024
-                    </h4>
-                    
-                    <div class="decoration"></div>
-                    
-                    <div class="invoice-title">
-                        <h1>Invoice</h1>
-                        <em>ENAB-3413</em>
-                        <strong>15 Aug 2024</strong>
-                    </div>
-                    <div class="invoice-logo">
-                        <a href="#">
-                            <img data-original="images/pictures/3t.jpg" class="preload-image responsive-image" src="images/pictures/3t.jpg">
-                        </a>
-                    </div>
-                    <div class="clear"></div>
-                </div>
-                <div class="decoration half-bottom"></div>
-                
-                <div class="invoice-item">
-                    <h1>ProMobile</h1>
-                    <h2>1 x $15.00 + Tax</h2>
-                    <h3>$15.00</h3>
-                </div>                
-                <div class="invoice-item">
-                    <h1>BeMobile</h1>
-                    <h2>1 x $15.00 + Tax</h2>
-                    <h3>$15.00</h3>
-                </div>                
-                <div class="invoice-item">
-                    <h1>JustMobile</h1>
-                    <h2>1 x $15.00 + Tax</h2>
-                    <h3>$15.00</h3>
-                </div>                
-                <div class="invoice-item full-bottom">
-                    <h1>CleanMobile</h1>
-                    <h2>1 x $15.00 + Tax</h2>
-                    <h3>$15.00</h3>
-                </div>
-                <div class="invoice-total">
-                    <h1 class="color-blue-dark">Subtotal</h1>
-                    <h2 class="color-blue-dark">$60.00</h2>
-                </div>                
-                <div class="invoice-total full-bottom">
-                    <h1 class="color-orange-dark">Taxes</h1>
-                    <h2 class="color-orange-dark">$40.00</h2>
-                </div>                
-                <div class="decoration half-bottom"></div>
-                <div class="invoice-total">
-                    <h3>Grand Total</h3>
-                    <h4 class="color-green-dark">$100.00</h4>
-                </div>
+                          
+        <div class="content half-bottom half-top">
+            <div class="home-tabs">
+                <a class="activate-tab-1 active-home-tab" href="#">Usuario</a>
+                <a class="activate-tab-2" href="#">Empresa</a>
+                <div class="clear"></div>
             </div>
-            
-            <div class="decoration"></div>
-            
-            <div class="one-half">
-                <a href="#" class="button button-icon button-full bg-green-dark  no-bottom"><i class="ion-document"></i>Aceptar</a>
-            </div>
-            <div class="one-half last-column">
-                <a href="#" class="button button-icon button-full bg-red-dark no-bottom"><i class="ion-upload"></i>Rechazar</a>
-            </div>
-            <div class="clear"></div>
         </div>
-        <div class="decoration decoration-margins"></div>
-                
+        
+        <div class="content" id="tab-1">
+            <div class="thumb-layout">
+               
+
+                <div class="page-login content full-bottom">
+                    <div class="page-login-input">
+                        <i class="login-icon ion-person"></i>
+                        <input id="valueLoginUserJW" type="text" value="Username" onfocus="if (this.value=='Username') this.value = ''" onblur="if (this.value=='') this.value = 'Username'">
+                    </div>                
+                    <div class="page-login-input">
+                        <i class="login-icon ion-android-lock"></i>
+                        <input id="valueLoginPassJW" type="password" value="password" onfocus="if (this.value=='password') this.value = ''" onblur="if (this.value=='') this.value = 'password'">
+                    </div>
+                    <div class="page-login-links">
+                        <a href="#" class="page-login-forgot"><i class="ion-ios-eye"></i>Forgot Credentials</a>
+                        <a href="#" class="page-login-create">Create Account<i class="ion-log-in"></i></a>
+                        <div class="clear"></div>
+                    </div>            
+        
+                    <a href="#" id="loginButtonJW" class="button button-green button-icon button-full half-top full-bottom"><i class="ion-log-in"></i>Login</a>
+        
+                    <div class="decoration"></div>
+        
+                    <a href="Register.html" class="button button-blue button-icon button-full half-top full-bottom"><i class="ion-person-add"></i>Create Account</a>           
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-fullscreen" id="tab-2">
+           
+
+            <div class="thumb-layout">
+               
+
+                <div class="page-login content full-bottom">
+                    <div class="page-login-input">
+                        <i class="login-icon ion-person"></i>
+                        <input type="text" value="Username" onfocus="if (this.value=='Username') this.value = ''" onblur="if (this.value=='') this.value = 'Username'">
+                    </div>                
+                    <div class="page-login-input">
+                        <i class="login-icon ion-android-lock"></i>
+                        <input type="password" value="password" onfocus="if (this.value=='password') this.value = ''" onblur="if (this.value=='') this.value = 'password'">
+                    </div>
+                    <div class="page-login-links">
+                        <a href="#" class="page-login-forgot"><i class="ion-ios-eye"></i>Forgot Credentials</a>
+                        <a href="#" class="page-login-create">Create Account<i class="ion-log-in"></i></a>
+                        <div class="clear"></div>
+                    </div>            
+        
+                    <a href="#" class="button button-green button-icon button-full half-top full-bottom"><i class="ion-log-in"></i>Login</a>
+        
+                    <div class="decoration"></div>
+        
+                    <a href="Register.html" class="button button-blue button-icon button-full half-top full-bottom"><i class="ion-person-add"></i>Create Account</a>           
+                </div>
+            </div>
+
+        </div>        
+        
+       
+        
         <div class="footer footer-dark">
             <a href="index.html" class="footer-logo scale-hover"></a>
             <p>
