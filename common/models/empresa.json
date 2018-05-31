@@ -38,7 +38,7 @@
   },
   "validations": [],
   "relations": {
-    "anuncios": {
+    "solicitud": {
       "type": "hasMany",
       "model": "Anuncio",
       "foreignKey": "",

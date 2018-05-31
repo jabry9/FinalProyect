@@ -29,7 +29,7 @@
     "anuncio": {
       "type": "belongsTo",
       "model": "Anuncio",
-      "foreignKey": "",
+      "foreignKey": "anun",
       "imageable": {
         "type": "belongsTo",
         "polymorphic": true

@@ -45,7 +45,7 @@
         "nestRemoting": true
       }
     },
-    "empresas": {
+    "solicitud": {
       "type": "hasMany",
       "model": "Empresa",
       "foreignKey": "",
@@ -53,11 +53,27 @@
         "nestRemoting": true
       },
       "through": "Solicitud"
+    },   
+    "solicitudes": {
+      "type": "hasMany",
+      "model": "Solicitud",
+      "foreignKey": "anuncioId",
+      "options": {
+        "nestRemoting": false
+      }
     },
     "categoria": {
       "type": "belongsTo",
       "model": "Category",
       "foreignKey": "",
+      "options": {
+        "nestRemoting": false
+      }
+    },
+    "multimedia": {
+      "type": "hasMany",
+      "model": "Multimedia",
+      "foreignKey": "anuncioId",
       "options": {
         "nestRemoting": false
       }
@@ -72,58 +88,6 @@
     }
   },
   "acls": [
-    {
-      "accessType": "EXECUTE",
-      "principalType": "ROLE",
-      "principalId": "$authenticated",
-      "permission": "ALLOW",
-      "property": "create"
-    },
-    {
-      "accessType": "EXECUTE",
-      "principalType": "ROLE",
-      "principalId": "$authenticated",
-      "permission": "ALLOW",
-      "property": "create"
-    },
-    {
-      "accessType": "WRITE",
-      "principalType": "ROLE",
-      "principalId": "$authenticated",
-      "permission": "ALLOW"
-    },
-    {
-      "accessType": "*",
-      "principalType": "ROLE",
-      "principalId": "$everyone",
-      "permission": "DENY"
-    },
-    {
-      "accessType": "READ",
-      "principalType": "ROLE",
-      "principalId": "$everyone",
-      "permission": "ALLOW"
-    },
-    {
-      "accessType": "EXECUTE",
-      "principalType": "ROLE",
-      "principalId": "$everyone",
-      "permission": "ALLOW",
-      "property": "getByPaginatione"
-    },
-    {
-      "accessType": "EXECUTE",
-      "principalType": "ROLE",
-      "principalId": "$everyone",
-      "permission": "ALLOW",
-      "property": "/getByPaginatione"
-    },
-    {
-      "accessType": "*",
-      "principalType": "ROLE",
-      "principalId": "$everyone",
-      "permission": "ALLOW"
-    }
   ],
   "methods": {
     "GetByPaginatione": {
@@ -163,6 +127,15 @@
           "http": {
             "source": "query"
           }
+        },
+        {
+          "arg": "position",
+          "type": "object",
+          "required": true,
+          "description": "current postion",
+          "http": {
+            "source": "query"
+          }
         }
       ],
       "returns": [
@@ -177,6 +150,32 @@
       "http": [
         {
           "path": "/getByPaginatione",
+          "verb": "get"
+        }
+      ]
+    },
+    "getMyAds": {
+      "accepts": [
+        {
+          "arg": "context",
+          "type": "object",
+          "http": {
+            "source": "context"
+          }
+        }
+      ],
+      "returns": [
+        {
+          "arg": "Ads",
+          "type": "array",
+          "root": false,
+          "description": "todos los anuncios del usuario loggeado"
+        }
+      ],
+      "description": "todos los anuncios del usuario loggeado",
+      "http": [
+        {
+          "path": "/getMyAds",
           "verb": "get"
         }
       ]

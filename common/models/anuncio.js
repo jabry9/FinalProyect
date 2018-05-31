@@ -24,12 +24,51 @@ module.exports = function(Anuncio) {
         
     });
 
+    Anuncio.getMyAds = function(context, callback) {
+        const usrLogId = context.req.accessToken.userId;
 
-    Anuncio.GetByPaginatione = function(title, category, page, adsPerPage, callback) {
-        var ads;
-        Anuncio.find({where: {titulo: { like: "%"+title+"%" }, categoriaId: category }, limit: adsPerPage, offset: ((page-1)*adsPerPage)}, function(data){
-            console.log(data);
+        Anuncio.find({where: {usuarioId: usrLogId},include: ['multimedia', 'solicitudes']}, function (err, Ads) {
+            if (err)
+                callback(err);
+
+            callback(null, Ads);
         });
-        callback(null, ads);
+    }
+
+    Anuncio.GetByPaginatione = function(title, category, page, adsPerPage, position, callback) {
+
+        if (0 < page)
+            page = ((page-1)*adsPerPage);
+
+        Anuncio.app.models.Category.find({},function (err, d) {
+            if (err)
+                callback(err);
+
+            let ar = [];
+
+            Anuncio.find({where: {titulo: {like: "%"+title+"%"}, categoriaId: {inq: filter(category, d, ar), location: {
+                near : position, }}},include: ['multimedia', 'solicitudes'], limit: adsPerPage, offset: page}, function(err, ad){
+                if (err)
+                    callback(err);
+
+                callback(null, ad);
+            });
+        });
+
+
       };
+};
+
+const filter = (category, categoryArray, categoriesArrayGood) => {
+
+    categoriesArrayGood.push(category);
+
+    categoryArray.forEach(cat => {
+        if (cat.parentCategoryId == category){
+            categoriesArrayGood = filter(cat.id, categoryArray, categoriesArrayGood);
+        }
+            
+    });
+
+    return categoriesArrayGood;
 };

@@ -23,6 +23,14 @@
       "options": {
         "nestRemoting": true
       }
+    },    
+    "empresa": {
+      "type": "belongsTo",
+      "model": "Empresa",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
     }
   },
   "acls": [],
