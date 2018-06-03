@@ -11,14 +11,7 @@ $(document).ready(function () {
         //logIn('a@a.a', 'a', function(){}); 
 
         logIn('a@a', 'a', function(seHaCreadoBien){
-            if (seHaCreadoBien)
-                $(location).attr('href', './index.html');
-            else
-                console.log('No');
 
-                getMyAds(function(da){
-                    console.log(da)
-                });
 
         }); 
         

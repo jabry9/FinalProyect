@@ -1,12 +1,51 @@
 const direction = 'http://localhost:3000/api/'; 
 let coord = null;
 
-const setSessionStorage = (cname, cvalue) => {
-    sessionStorage.setItem(cname, cvalue);
+const setCookie = (cname, cvalue, exdays = 2) => {
+    const d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    const expires = "expires="+ d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+const createCookieAccesToken = (cvalue, created, ttl) => {
+    const d = new Date(created);
+    d.setTime(d.getTime() + ttl);
+    const expires = "expires="+ d.toUTCString();
+    document.cookie = "access_token=" + cvalue + ";" + expires + ";path=/";
+}
+
+const getCookieAccesToken = () => {
+    const name = "access_token=";
+    const decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
 }
 
 const getFromSessionStorage = (cname) => {
-    return sessionStorage.getItem(cname);
+    //return sessionStorage.getItem(cname);
+    const name = cname + "=";
+    const decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
 }
 
 const removeFromSessionStorage = (cname) => {
@@ -24,7 +63,8 @@ const logIn = (nameOrEmail, password, cb) => {
                     password: password
                 }
                 ).then(function(data) {
-                    setSessionStorage('access_token', data.id);
+                    console.log(data);
+                    createCookieAccesToken(data.id, data.created, data.ttl);
                     cb(true);
                 }).fail(function(xhr, status, error){
                     cb(false);
@@ -40,7 +80,7 @@ const logOut = (cb) => {
 
     alredyLogged(function(is){
         if (is)
-            $.post(direction+'Usuarios/logout?access_token='+getFromSessionStorage('access_token')
+            $.post(direction+'Usuarios/logout?access_token='+getCookieAccesToken()
             ).then(function(data) {
                 removeFromSessionStorage('access_token');
                 cb(true);
@@ -56,9 +96,9 @@ const logOut = (cb) => {
 
 const alredyLogged = (cb) => {
 
-    if (null != getFromSessionStorage('access_token')){
+    if (null != getCookieAccesToken()){
         $.get(direction+'Usuarios/getUser', {
-            access_token: getFromSessionStorage('access_token')
+            access_token: getCookieAccesToken()
         }).then(function(data) {
             cb(true);
         }).fail(function(){
@@ -73,7 +113,7 @@ const getCurrentUserLogged = (cb) => {
     alredyLogged(function(is){
         if (is)
         $.get(direction+'Usuarios/getUser', {
-            access_token: getFromSessionStorage('access_token')
+            access_token: getCookieAccesToken()
         }).then(function(data) {
             cb(data.User);
         }).fail(function(){
@@ -89,7 +129,7 @@ const getMyAds = (cb) => {
     alredyLogged(function(is){
         if (is)
         $.get(direction+'Usuarios/getMyAds', {
-            access_token: getFromSessionStorage('access_token')
+            access_token: getCookieAccesToken()
         }).then(function(data) {
             cb(data.Ads);
         }).fail(function(){
