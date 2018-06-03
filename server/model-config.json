@@ -14,65 +14,65 @@
     ]
   },
   "User": {
-    "dataSource": "mysqlDs"
+    "dataSource": "db"
   },
   "AccessToken": {
-    "dataSource": "mysqlDs",
+    "dataSource": "db",
     "public": false
   },
   "ACL": {
-    "dataSource": "mysqlDs",
+    "dataSource": "db",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "mysqlDs",
+    "dataSource": "db",
     "public": false,
     "options": {
       "strictObjectIDCoercion": true
     }
   },
   "Role": {
-    "dataSource": "mysqlDs",
+    "dataSource": "db",
     "public": false
   },
   "Usuario": {
-    "dataSource": "mysqlDs",
+    "dataSource": "db",
     "public": true
   },
   "Empresa": {
-    "dataSource": "mysqlDs",
+    "dataSource": "db",
     "public": true
   },
   "Category": {
-    "dataSource": "mysqlDs",
+    "dataSource": "db",
     "public": true
   },
   "ProfilerCategory": {
-    "dataSource": "mysqlDs",
+    "dataSource": "db",
     "public": true
   },
   "Anuncio": {
-    "dataSource": "mysqlDs",
+    "dataSource": "db",
     "public": true
   },
   "Multimedia": {
-    "dataSource": "mysqlDs",
+    "dataSource": "db",
     "public": true
   },
   "Solicitud": {
-    "dataSource": "mysqlDs",
+    "dataSource": "db",
     "public": true
   },
   "Rating": {
-    "dataSource": "mysqlDs",
+    "dataSource": "db",
     "public": true
   },
   "Denuncias": {
-    "dataSource": "mysqlDs",
+    "dataSource": "db",
     "public": true
   },
   "Chat": {
-    "dataSource": "mysqlDs",
+    "dataSource": "db",
     "public": true
   }
 }
