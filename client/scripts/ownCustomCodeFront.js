@@ -9,12 +9,12 @@ $(document).ready(function () {
     });*/
 
 
-    $("#loginButtonJW").click(function(){
+    /*$("#loginButtonJW").click(function(){
         
        valueLoginUsarName= $("#valueLoginUserJW").val();
        valueLoginPassword= $("#valueLoginPassJW").val();
         alert("Rtttt");
-       /*logIn(valueLoginUsarName, valueLoginPassword, function(seHaCreadoBien){
+       logIn(valueLoginUsarName, valueLoginPassword, function(seHaCreadoBien){
         
             if (seHaCreadoBien){
                 $(location).attr('href', './index.html');
@@ -26,17 +26,17 @@ $(document).ready(function () {
             });
 
 
-        }); /
+        }); 
         
-        /*console.log(getFromSessionStorage('access_token'));*/
-        //logOut(function(){});
+        console.log(getFromSessionStorage('access_token'));
+        logOut(function(){});
 
-        //$(location).attr('href', './index.html')
+        $(location).attr('href', './index.html')
 
-        /*insertUser("ne", coord, "ume", "eml@mail.sd", "paword", function(isCreatedOk) {
+        insertUser("ne", coord, "ume", "eml@mail.sd", "paword", function(isCreatedOk) {
             console.log(isCreatedOk);
-        });*/
-    });
+        });
+    });*/
 
     $(".logOutButtonJWClass").click(function(){
 

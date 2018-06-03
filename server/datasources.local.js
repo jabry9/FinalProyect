@@ -5,4 +5,26 @@
 const config = require('./config.local.js')
 
 module.exports = {
+    mysqlDs: {
+        connector: 'mysql',
+        hostname: config.db_host,
+        port: config.db_port,
+        user: config.db_user,
+        password: config.db_password,
+        database: config.db_database,
+      },
+      EmailDS: {
+        name: "EmailDS",
+        connector: "mail",
+        transports: [{
+          type: "SMTP",
+          host: "smtp.gmail.com",
+          secure: true,
+          port: 465,
+          auth: {
+            user: config.email_user,
+            pass: config.email_password
+          }
+        }]
+      }
 };

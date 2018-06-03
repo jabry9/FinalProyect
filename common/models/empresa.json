@@ -1,6 +1,6 @@
 {
   "name": "Empresa",
-  "base": "User",
+  "base": "PersistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
@@ -46,6 +46,14 @@
         "nestRemoting": true
       },
       "through": "Solicitud"
+    },
+    "usuario": {
+      "type": "belongsTo",
+      "model": "Usuario",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
     },
     "profiler": {
       "type": "belongsTo",
