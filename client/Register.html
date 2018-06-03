@@ -18,25 +18,27 @@
 <script type="text/javascript" src="scripts/custom.js"></script>
 <script type="text/javascript" src="scripts/ownCustomCode.js"></script>
 <script type="text/javascript" src="scripts/ownCustomCodeFront.js"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script type="text/javascript" src="scripts/AngularFile.js"></script>
 
 </head>
 
 <body>
-<div id="page-transitions">
-    
+        
+<div id="page-transitions"  ng-app="myApp" ng-controller="myCtrl">
+        
 <div class="page-preloader page-preloader-dark">
     <div class="spinner"></div>
 </div>
     
 <div class="header header-dark">
-    <a href="index.html" class="header-logo">CUE<span class="color-red-dark">NTA</span></a>
+    <a href="index.html" class="header-logo">REGI<span class="color-red-dark">STER</span></a>
     <a href="#" class="header-icon header-icon-1 close-sidebar-mask"></a>
     <a href="#" class="header-icon header-icon-1 open-all-sidebar">
         <i class="ion-ios-arrow-left"></i>  
     </a>
 </div>
-    
+
 <!-- Main Small Icon Sidebar -->
 <div class="sidebar-menu sidebar-dark">
     <div class="sidebar-menu-scroll">
@@ -53,11 +55,11 @@
 
 <!-- Configuracion Submenus -->
 <div class="submenu submenu-dark" id="sub1">
-    <div class="submenu-scroll">
-        <a class="close-sidebar" href="#"><i class="ion-ios-close-empty"></i><em>Cerrar</em></a>              
-        <a class="active-menu" href="Register.html"><i class="ion-ios-unlocked-outline"></i><em>Registrar / Logiar</em></a>       
+    <div class="submenu-scroll">             
+        <a ng-show="noEstoyLogeado" href="Login.html"><i class="ion-ios-unlocked-outline"></i><em>Iniciar Sesion</em></a>
+        <a ng-show="noEstoyLogeado" class="active-menu" href="Register.html"><i class="ion-ios-unlocked-outline"></i><em>Registrar</em></a>       
         <a href="Notificacion.html"><i class="ion-ios-bell-outline"></i><em>Notificaciones</em></a>
-        <a href="#"><i class="ion-ios-locked-outline"></i><em>Cerrar Sesion</em></a>
+        <a ng-show="estoyLogeado" href="#" class="logOutButtonJWClass" ><i class="ion-ios-locked-outline"></i><em>Cerrar Sesion</em></a>
         <a href="#"><i class="ion-help"></i><em>Ayuda</em></a>        
         <a class="close-sidebar" href="#"><i class="ion-ios-close-empty"></i><em>Cerrar</em></a>  
     </div>
@@ -73,148 +75,59 @@
             <div class="home-tabs">
                 <a class="activate-tab-1 active-home-tab" href="#">Usuario</a>
                 <a class="activate-tab-2" href="#">Empresa</a>
-                <a class="activate-tab-3" href="#">Register</a>
-                <!-- <a class="activate-tab-3" href="#">Cards L</a> -->
                 <div class="clear"></div>
             </div>
         </div>
         
         <div class="content" id="tab-1">
-            <div class="thumb-layout">
-               
-
-                <div class="page-login content full-bottom">
-                    <!-- <a href="#" class="page-login-logo"><img class="preload-image" data-original="images/preload-logo.png"  src="images/empty.png"></a> -->
-                    <div class="page-login-input">
-                        <i class="login-icon ion-person"></i>
-                        <input type="text" value="Email Or NickName" onfocus="if (this.value=='Username') this.value = ''" onblur="if (this.value=='') this.value = 'Username'">
-                    </div>                
-                    <div class="page-login-input">
-                        <i class="login-icon ion-android-lock"></i>
-                        <input type="password" value="password" onfocus="if (this.value=='password') this.value = ''" onblur="if (this.value=='') this.value = 'password'">
-                    </div>
-                    <div class="page-login-links">
-                        <a href="#" class="page-login-forgot"><i class="ion-ios-eye"></i>Forgot Credentials</a>
-                        <a href="#" class="page-login-create">Create Account<i class="ion-log-in"></i></a>
-                        <div class="clear"></div>
-                    </div>            
-        
-                    <a href="#" id="loginButtonJW" class="button button-green button-icon button-full half-top full-bottom"><i class="ion-log-in"></i>Login</a>
-        
-       
+            <div class="page-login content">
+                <div class="page-login-input">
+                    <i class="login-icon ion-person"></i>
+                    <input id="valueRigesterNombreJW" type="text" value="Name" onfocus="if (this.value=='Name') this.value = ''" onblur="if (this.value=='') this.value = 'Name'">
                 </div>
-            </div>
-            <div class="decoration"></div>
+                <div class="page-login-input">
+                    <i class="login-icon ion-person"></i>
+                    <input id="valueRigesterUserJW" type="text" value="Username" onfocus="if (this.value=='Username') this.value = ''" onblur="if (this.value=='') this.value = 'Username'">
+                </div>                   
+    
+                <div class="page-login-input">
+                    <i class="login-icon ion-at"></i>
+                    <input id="valueRigesterEmailJW" type="text" value="Email Address" onfocus="if (this.value=='Email Address') this.value = ''" onblur="if (this.value=='') this.value = 'Email Address'">
+                </div>                     
+                <div class="page-login-input full-bottom">
+                    <i class="login-icon ion-locked"></i>
+                    <input id="valueRigesterPassJW" type="password" value="password" onfocus="if (this.value=='password') this.value = ''" onblur="if (this.value=='') this.value = 'password'">
+                </div>
+    
+                <a href="#" id="registerButtonJW" class="button button-green button-icon button-full half-top full-bottom"><i class="ion-log-in"></i>Create Account</a>
+          </div>
+           
         </div>
         
-        <div class="content" id="tab-2">
-            <div class="thumb-layout">
-               
-
-                <div class="page-login content full-bottom">
-                    <!-- <a href="#" class="page-login-logo"><img class="preload-image" data-original="images/preload-logo.png"  src="images/empty.png"></a> -->
-                    <div class="page-login-input">
-                        <i class="login-icon ion-person"></i>
-                        <input type="text" value="Email Or NickName" onfocus="if (this.value=='Username') this.value = ''" onblur="if (this.value=='') this.value = 'Username'">
-                    </div>                
-                    <div class="page-login-input">
-                        <i class="login-icon ion-android-lock"></i>
-                        <input type="password" value="password" onfocus="if (this.value=='password') this.value = ''" onblur="if (this.value=='') this.value = 'password'">
-                    </div>
-                    <div class="page-login-links">
-                        <a href="#" class="page-login-forgot"><i class="ion-ios-eye"></i>Forgot Credentials</a>
-                        <a href="#" class="page-login-create">Create Accoueent<i class="ion-log-in"></i></a>
-                        <div class="clear"></div>
-                    </div>            
-        
-                    <a href="#" id="loginButtonJW" class="button button-green button-icon button-full half-top full-bottom"><i class="ion-log-in"></i>Login</a>
-        
-       
-                </div>
-            </div>
-            <div class="decoration"></div>
-        </div>
-
-
-        <div class="content-fullscreen" id="tab-3">
-                <div id="page-content" class="header-clear">
-                        <div id="page-content-scroll">
-
-            <div class="content half-bottom half-top">
-                <div class="home-tabs">
-                    <a class="activate-tab-4 active-home-tab" href="#">Usuario</a>
-                    <a class="activate-tab-5" href="#">Empresa</a>
-                    <!-- <a class="activate-tab-3" href="#">Cards L</a> -->
-                    <div class="clear"></div>
-                </div>
-            </div>
-            <div class="content" id="tab-4">
-                <div class="thumb-layout">
+        <div class="content-fullscreen" id="tab-2">
+           
 
             <div class="page-login content">
-                <!-- <a href="#" class="page-login-logo"><img class="preload-image" data-original="images/preload-logo.png" alt="img" src="images/empty.png"></a> -->
-                <div class="page-login-input">
+               <div class="page-login-input">
                     <i class="login-icon ion-person"></i>
                     <input type="text" value="Username" onfocus="if (this.value=='Username') this.value = ''" onblur="if (this.value=='') this.value = 'Username'">
                 </div>                   
     
                 <div class="page-login-input">
                     <i class="login-icon ion-at"></i>
-                    <input type="text" value="Email" onfocus="if (this.value=='Email Address') this.value = ''" onblur="if (this.value=='') this.value = 'Email Or NickName'">
+                    <input type="text" value="Email Address" onfocus="if (this.value=='Email Address') this.value = ''" onblur="if (this.value=='') this.value = 'Email Address'">
                 </div>                     
-                <div class="page-login-input">
-                    <i class="login-icon ion-ios-calendar-outline"></i>
-                    <input class="set-today" type="date">                
-                </div>                
                 <div class="page-login-input full-bottom">
                     <i class="login-icon ion-locked"></i>
                     <input type="password" value="password" onfocus="if (this.value=='password') this.value = ''" onblur="if (this.value=='') this.value = 'password'">
                 </div>
     
                 <a href="#" class="button button-green button-icon button-full half-top full-bottom"><i class="ion-log-in"></i>Create Account</a>
-
-                <a href="#" class="button button-blue button-icon button-full half-top full-bottom"><i class="ion-person"></i>Login Here</a>           
-            </div>
-
-            </div>
-            <div class="decoration"></div>
-        </div>
-
-        <div class="content" id="tab-5">
-                <div class="thumb-layout">
-
-            <div class="page-login content">
-                <!-- <a href="#" class="page-login-logo"><img class="preload-image" data-original="images/preload-logo.png" alt="img" src="images/empty.png"></a> -->
-                <div class="page-login-input">
-                    <i class="login-icon ion-person"></i>
-                    <input type="text" value="Usernamttte" onfocus="if (this.value=='Username') this.value = ''" onblur="if (this.value=='') this.value = 'Username'">
-                </div>                   
     
-                <div class="page-login-input">
-                    <i class="login-icon ion-at"></i>
-                    <input type="text" value="Email" onfocus="if (this.value=='Email Address') this.value = ''" onblur="if (this.value=='') this.value = 'Email Or NickName'">
-                </div>                     
-                <div class="page-login-input">
-                    <i class="login-icon ion-ios-calendar-outline"></i>
-                    <input class="set-today" type="date">                
-                </div>                
-                <div class="page-login-input full-bottom">
-                    <i class="login-icon ion-locked"></i>
-                    <input type="password" value="password" onfocus="if (this.value=='password') this.value = ''" onblur="if (this.value=='') this.value = 'password'">
-                </div>
-    
-                <a href="#" class="button button-green button-icon button-full half-top full-bottom"><i class="ion-log-in"></i>Create Account</a>
-
-                <a href="#" class="button button-blue button-icon button-full half-top full-bottom"><i class="ion-person"></i>Login Here</a>           
             </div>
 
-            </div>
-            <div class="decoration"></div>
-        </div>
         </div>        
-          </div>
-        </div>     
-    
+        
        
         
         <div class="footer footer-dark">
@@ -268,6 +181,7 @@
     </div>
 </div>
  
-    
+  
 </div>
+
 </body>

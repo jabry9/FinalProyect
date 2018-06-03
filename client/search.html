@@ -16,6 +16,11 @@
 <script type="text/javascript" src="scripts/jquery.js"></script>
 <script type="text/javascript" src="scripts/plugins.js"></script>
 <script type="text/javascript" src="scripts/custom.js"></script>
+<script type="text/javascript" src="scripts/ownCustomCode.js"></script>
+<script type="text/javascript" src="scripts/ownCustomCodeFront.js"></script> 
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script type="text/javascript" src="scripts/AngularFile.js"></script>
+
 </head>
 
 <body>
@@ -47,13 +52,11 @@
 
 <!-- Configuracion Submenus -->
 <div class="submenu submenu-dark" id="sub1">
-    <div class="submenu-scroll">
-        <a class="close-sidebar" href="#"><i class="ion-ios-close-empty"></i><em>Cerrar</em></a>              
-        <a href="Register.html"><i class="ion-ios-unlocked-outline"></i><em>Registrar / Logiar</em></a>       
-        <a href="Notificacion.html"><i class="ion-ios-bell-outline"></i><em>Notificaciones</em></a>
-        <a href="#"><i class="ion-ios-locked-outline"></i><em>Cerrar Sesion</em></a>
+    <div class="submenu-scroll">          
+        <a href="Login.html"><i class="ion-ios-unlocked-outline"></i><em>Iniciar Sesion</em></a>
+        <a href="Register.html"><i class="ion-ios-unlocked-outline"></i><em>Registrar</em></a>          
+        <a href="#" class="logOutButtonJWClass" ><i class="ion-ios-locked-outline"></i><em>Cerrar Sesion</em></a>
         <a href="#"><i class="ion-help"></i><em>Ayuda</em></a>        
-        <a class="close-sidebar" href="#"><i class="ion-ios-close-empty"></i><em>Cerrar</em></a>  
     </div>
 </div>
             
@@ -81,15 +84,6 @@
                 <div class="select-box">
                         <select>
                             <option class="select-title" value="o0">SubCategorias</option>
-                            <option value="o1">Option 1</option>
-                            <option value="o2">Option 2</option>
-                            <option value="o3">Option 3</option>
-                            <option value="o4">Option 4</option>
-                        </select>
-                </div>
-                <div class="select-box">
-                        <select>
-                            <option class="select-title" value="o0">Provincia</option>
                             <option value="o1">Option 1</option>
                             <option value="o2">Option 2</option>
                             <option value="o3">Option 3</option>

@@ -52,30 +52,6 @@ const removeFromSessionStorage = (cname) => {
     sessionStorage.removeItem(cname);
 }
 
-
-const logIn = (nameOrEmail, password, cb) => {
-
-    alredyLogged(function(isLogged){
-        if (false === isLogged){
-                $.post(direction+'Usuarios/login',
-                {
-                    email: nameOrEmail,
-                    password: password
-                }
-                ).then(function(data) {
-                    console.log(data);
-                    createCookieAccesToken(data.id, data.created, data.ttl);
-                    cb(true);
-                }).fail(function(xhr, status, error){
-                    cb(false);
-                });
-            }
-        else
-            cb(true);
-    });
-
-}
-
 const logOut = (cb) => {
 
     alredyLogged(function(is){
@@ -91,6 +67,39 @@ const logOut = (cb) => {
             cb(true);
     });
 
+
+}
+
+const logInUser = (nameOrEmail = '', password = '', cb) => {
+    alredyLogged(function(isLogged){
+        if (false === isLogged){
+                $.post(direction+'Usuarios/login',
+                {
+                    username: nameOrEmail,
+                    password: password
+                }
+                ).then(function(data) {
+                    console.log(data);
+                    createCookieAccesToken(data.id, data.created, data.ttl);
+                    cb(true);
+                }).fail(function(xhr, status, error){
+                    $.post(direction+'Usuarios/login',
+                        {
+                            email: nameOrEmail,
+                            password: password
+                        }
+                        ).then(function(data) {
+                            console.log(data);
+                            createCookieAccesToken(data.id, data.created, data.ttl);
+                            cb(true);
+                        }).fail(function(xhr, status, error){
+                            cb(false);
+                        });
+                });
+            }
+        else
+            cb(true);
+    });
 
 }
 
