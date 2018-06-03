@@ -8,15 +8,15 @@ const setCookie = (cname, cvalue, exdays = 2) => {
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
 
-const createCookieAccesToken = (cvalue, created, ttl) => {
-    const d = new Date(created);
-    d.setTime(d.getTime() + ttl);
+const createCookieAccesToken = (cvalue) => {
+    const d = new Date();
+    d.setTime(d.getTime() + (10*24*60*60*1000));
     const expires = "expires="+ d.toUTCString();
-    document.cookie = "access_token_user=" + cvalue + ";" + expires + ";path=/";
+    document.cookie = "access_token=" + cvalue + ";" + expires + ";path=/";
 }
 
 const getCookieAccesToken = () => {
-    const name = "access_token_user=";
+    const name = "access_token=";
     const decodedCookie = decodeURIComponent(document.cookie);
     let ca = decodedCookie.split(';');
     for(let i = 0; i <ca.length; i++) {
@@ -32,7 +32,7 @@ const getCookieAccesToken = () => {
 }
 
 const removeCookieAccesToken = () => {
-    document.cookie = "access_token_user=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "access_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 }
 
 const getCookie = (cname) => {
@@ -119,33 +119,6 @@ const setCoord = (position) => {
     coord = position;
 }
 
-const insertUser = (name, coord, userName, email, password, cb) => {
-
-    if (null === coord) {
-        coord = {
-            coords: {
-                latitude: 0,
-                longitude: 0
-            }
-        };
-    }
-     $.post(direction+'Usuarios',
-        {
-        name: name,
-        location: {
-            lat: coord.coords.latitude,
-            lng: coord.coords.longitude
-        },
-        username: userName,
-        email: email,
-        password: password
-        }
-    ).then(function() {
-       cb(true);
-    }).fail(function(){
-        cb(false);
-    });
-}
 
 const insertAd = (title, presupMAX, materialsINC, coord, description, categoryId, cb) => {
 

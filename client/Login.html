@@ -19,7 +19,6 @@
 <script type="text/javascript" src="scripts/ownCustomCode.js"></script>
 <script type="text/javascript" src="scripts/ownCustomCodeFront.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-<script type="text/javascript" src="scripts/AngularFile.js"></script>
 <script type="text/javascript" src="scripts/LogIn/logInScripts.js"></script>
 
 
@@ -28,14 +27,14 @@
 </head>
 
 <body>
-<div id="page-transitions" ng-app="myApp" ng-controller="myCtrl">
+<div id="page-transitions" ng-app="logInApp" ng-controller="logInCtrl">
     
 <div class="page-preloader page-preloader-dark">
     <div class="spinner"></div>
 </div>
     
 <div class="header header-dark">
-    <a href="index.html" class="header-logo">LO<span class="color-red-dark">GIN</span></a>
+    <a href="index.html" target="_top" class="header-logo">LO<span class="color-red-dark">GIN</span></a>
     <a href="#" class="header-icon header-icon-1 close-sidebar-mask"></a>
     <a href="#" class="header-icon header-icon-1 open-all-sidebar">
         <i class="ion-ios-arrow-left"></i>  
@@ -45,7 +44,7 @@
 <!-- Main Small Icon Sidebar -->
 <div class="sidebar-menu sidebar-dark">
     <div class="sidebar-menu-scroll">
-        <a href="index.html"><i class="ion-ios-star-outline"></i><em>Portada</em></a>          
+        <a href="index.html" target="_top"><i class="ion-ios-star-outline"></i><em>Portada</em></a>          
         <a class="current-menu" data-submenus="sub1" href="#"><i class="ion-ios-gear-outline"></i><em>Config</em></a>
     </div>
 </div>
@@ -53,9 +52,8 @@
 <!-- Configuracion Submenus -->
 <div class="submenu submenu-dark" id="sub1">
     <div class="submenu-scroll">          
-        <a  href="Register.html"><i class="ion-ios-unlocked-outline"></i><em>Registrar</em></a>       
-        <a href="Notificacion.html"><i class="ion-ios-bell-outline"></i><em>Notificaciones</em></a>
-        <a href="#"><i class="ion-help"></i><em>Ayuda</em></a>        
+        <a  href="Register.html" target="_top"><i class="ion-ios-unlocked-outline"></i><em>Registrar</em></a>       
+        <a href="Ayuda.html" target="_top"><i class="ion-help"></i><em>Ayuda</em></a>        
     </div>
 </div>
 
@@ -64,13 +62,6 @@
 <div id="page-content" class="header-clear">
     <div id="page-content-scroll">
                           
-        <div class="content half-bottom half-top">
-            <div class="home-tabs">
-                <a class="activate-tab-1 active-home-tab" href="#">Usuario</a>
-                <a class="activate-tab-2" href="#">Empresa</a>
-                <div class="clear"></div>
-            </div>
-        </div>
         
         <div class="content" id="tab-1">
             <div class="thumb-layout">
@@ -98,91 +89,19 @@
               
             </div>
         </div>
-        
-        <div class="content-fullscreen" id="tab-2">
-           
-
-            <div class="thumb-layout">
-               
-
-                <div class="page-login content full-bottom">
-                    <div class="page-login-input">
-                        <i class="login-icon ion-person"></i>
-                        <input type="text" value="Username" onfocus="if (this.value=='Username') this.value = ''" onblur="if (this.value=='') this.value = 'Username'">
-                    </div>                
-                    <div class="page-login-input">
-                        <i class="login-icon ion-android-lock"></i>
-                        <input type="password" value="password" onfocus="if (this.value=='password') this.value = ''" onblur="if (this.value=='') this.value = 'password'">
-                    </div>
-                    <div class="page-login-links">
-                        <a href="#" class="page-login-forgot"><i class="ion-ios-eye"></i>Forgot Credentials</a>
-                        <a href="#" class="page-login-create">Create Account<i class="ion-log-in"></i></a>
-                        <div class="clear"></div>
-                    </div>            
-        
-                    <a href="#" class="button button-green button-icon button-full half-top full-bottom"><i class="ion-log-in"></i>Login</a>
-        
-                    <div class="decoration"></div>
-        
-                    <a href="Register.html" class="button button-blue button-icon button-full half-top full-bottom"><i class="ion-person-add"></i>Create Account</a>           
-                </div>
-            </div>
-
-        </div>        
-        
-       
+         
         
         <div class="footer footer-dark">
-            <a href="index.html" class="footer-logo scale-hover"></a>
+            <a href="index.html" target="_top" class="footer-logo scale-hover"></a>
             <p>
                 Simplicity and complexity packed into a beautiful, 
                 feature filled, powerful, gorgeous mobile template.
             </p>
-            <div class="footer-socials">
-                <a href="#" class="icon icon-round icon-ghost icon-xs facebook-bg"><i class="ion-social-facebook"></i></a>
-                <a href="#" class="icon icon-round icon-ghost icon-xs twitter-bg"><i class="ion-social-twitter"></i></a>
-                <a href="#" class="icon icon-round icon-ghost icon-xs google-bg"><i class="ion-social-googleplus"></i></a>
-                <a href="#" class="icon icon-round icon-ghost icon-xs phone-bg"><i class="ion-ios-telephone"></i></a>
-                <a href="#" class="icon icon-round icon-ghost icon-xs show-share-bottom border-magenta-dark"><i class="ion-android-share"></i></a>
-                <a href="#" class="icon icon-round icon-ghost icon-xs back-to-top border-blue-light"><i class="ion-arrow-up-b"></i></a>
-            </div>
             <div class="decoration"></div>
             <p class="copyright-text">Copyright <span id="copyright-year"></span>. All Rights Reserved.</p>
         </div>
     </div>  
 </div>
-    
-<div class="share-bottom share-dark">
-    <h3>Share Page</h3>
-    <div class="ion-android-search">
-        <a href="https://www.facebook.com/sharer/sharer.php?u=http://www.themeforest.net/">
-            <i class="ion-social-facebook-outline icon-ghost facebook-bg"></i>
-            Facebook
-        </a>
-        <a href="https://twitter.com/home?status=Check%20out%20ThemeForest%20http://www.themeforest.net">
-            <i class="ion-social-twitter-outline twitter-bg"></i>
-            Twitter
-        </a>
-        <a href="https://plus.google.com/share?url=http://www.themeforest.net">
-            <i class="ion-social-googleplus-outline icon-ghost google-bg"></i>
-            Google
-        </a>
-        <a href="https://pinterest.com/pin/create/button/?url=http://www.themeforest.net/&media=https://0.s3.envato.com/files/63790821/profile-image.jpg&description=Themes%20and%20Templates">
-            <i class="ion-social-pinterest-outline icon-ghost pinterest-bg"></i>
-            Pinterest
-        </a>
-        <a href="sms:">
-            <i class="ion-ios-chatboxes-outline icon-ghost sms-bg"></i>
-            Text
-        </a>
-        <a href="mailto:?&subject=Check this page out!&body=http://www.themeforest.net">
-            <i class="ion-ios-email-outline icon-ghost mail-bg"></i>
-            Email
-        </a>
-        <div class="clear"></div>
-    </div>
-</div>
- 
     
 </div>
 </body>

@@ -17,18 +17,18 @@
 <script type="text/javascript" src="scripts/plugins.js"></script>
 <script type="text/javascript" src="scripts/custom.js"></script>
 <script type="text/javascript" src="scripts/ownCustomCode.js"></script>
-<script type="text/javascript" src="scripts/ownCustomCodeFront.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-<script type="text/javascript" src="scripts/AngularFile.js"></script>
+<script type="text/javascript" src="scripts/Index/indexScript.js"></script>
+
 </head>
 
 <body>
-<div id="page-transitions">
+<div id="page-transitions" ng-app="indexApp" ng-controller="indexCtrl">
     
 <div class="page-preloader page-preloader-dark">
     <div class="spinner"></div>
 </div>
-    
+
 <div class="header header-dark">
         <a href="index.html" class="header-logo">PRE <span class="color-red-dark">JW</span></a>
         <a href="#" class="header-icon header-icon-1 close-sidebar-mask"></a>
@@ -42,76 +42,32 @@
     
 <!-- Main Small Icon Sidebar -->
 <div class="sidebar-menu sidebar-dark">
-    <div class="sidebar-menu-scroll">
-        <a href="index.html"><i class="ion-ios-star-outline"></i><em>Actualizar</em></a>       
-        <a href="Publish Ad 1.html"><i class="ion-ios-list-outline"></i><em>Publicar</em></a>       
-        <a href="profile.html"><i class="ion-ios-person-outline"></i><em>Perfil</em></a>      
-        <a href="Mis-mensajes.html"><i class="ion-ios-email-outline"></i><em>Mensajes</em></a>       
-        <a href="Mis-anuncios.html"><i class="ion-ios-compose-outline"></i><em>Anuncios</em></a>
-        <a href="Solicitudes.html"><i class="ion-ios-cart-outline"></i><em>Solicitudes</em></a>
-        <a href="Mis-favoritos.html"><i class="ion-ios-star-outline"></i><em>Favoritos</em></a>       
+    <div class="sidebar-menu-scroll">   
+        <a ng-show="estoyLogeado" href="Publish Ad 1.html"><i class="ion-ios-list-outline"></i><em>Publicar</em></a>       
+        <a ng-show="estoyLogeado" href="profile.html"><i class="ion-ios-person-outline"></i><em>Perfil</em></a>      
+        <a ng-show="estoyLogeado" href="Mis-mensajes.html"><i class="ion-ios-email-outline"></i><em>Mensajes</em></a>       
+        <a ng-show="estoyLogeado" href="Mis-anuncios.html"><i class="ion-ios-compose-outline"></i><em>Anuncios</em></a>
+        <a ng-show="estoyLogeado" href="Solicitudes.html"><i class="ion-ios-cart-outline"></i><em>Solicitudes</em></a>
+        <a ng-show="estoyLogeado" href="Mis-favoritos.html"><i class="ion-ios-star-outline"></i><em>Favoritos</em></a>       
         <a data-submenus="sub1" href="#"><i class="ion-ios-gear-outline"></i><em>Configuracion</em></a>      
     </div>
 </div>
 <!-- Configuracion Submenus -->
 <div class="submenu submenu-dark" id="sub1">
     <div class="submenu-scroll">         
-        <a href="Login.html" target="_top"><i class="ion-ios-unlocked-outline"></i><em>Iniciar Sesion</em></a>
-        <a href="Register.html" target="_top"><i class="ion-ios-unlocked-outline"></i><em>Registrar</em></a>          
-        <a href="Notificacion.html"><i class="ion-ios-bell-outline"></i><em>Notificaciones</em></a>
-        <a href="#" class="logOutButtonJWClass" ><i class="ion-ios-locked-outline"></i><em>Cerrar Sesion</em></a>
-        <a href="#"><i class="ion-help"></i><em>Ayuda</em></a>        
+        <a ng-show="noEstoyLogeado" href="Login.html" target="_top"><i class="ion-ios-unlocked-outline"></i><em>Iniciar Sesion</em></a>
+        <a ng-show="noEstoyLogeado" href="Register.html" target="_top"><i class="ion-ios-unlocked-outline"></i><em>Registrar</em></a>          
+        <a ng-show="estoyLogeado" ng-click="logOut()" href="#" class="logOutButtonJWClass" ><i class="ion-ios-locked-outline"></i><em>Cerrar Sesion</em></a>
+        <a href="Ayuda.html" target="_top"><i class="ion-help"></i><em>Ayuda</em></a>        
     </div>
 </div>
             
 <div id="page-content" class="header-clear">
     <div id="page-content-scroll">
         
-        <p class="category-title">
-                Anuncio Descatados
-                <a href="#">See All</a>
-            </p>
+
             <div class="clear"></div>
-            <div class="category-slider">
-                <div class="swiper-wrapper">
-                    <a class="swiper-slide" href="Ver-anuncio.html">
-                        <img class="responsive-image" src="images/pictures/3t.jpg" alt="img">
-                        <em>Bread and Butter</em>
-                        <strong>$55.30</strong>
-                        <u class="ion-person"> por Enabled</u>
-                    </a>            
-                    <a class="swiper-slide" href="Ver-anuncio.html">
-                        <img class="responsive-image" src="images/pictures/2t.jpg" alt="img">
-                        <em>Frying Pans</em>
-                        <strong>$55.30</strong>
-                        <u class="ion-person"> por Enabled</u>
-                    </a>            
-                    <a class="swiper-slide" href="Ver-anuncio.html">
-                        <img class="responsive-image" src="images/pictures/1t.jpg" alt="img">
-                        <em>Fruit Pie</em>
-                        <strong>$55.30</strong>
-                        <u class="ion-person"> por Enabled</u>
-                    </a>            
-                    <a class="swiper-slide" href="Ver-anuncio.html">
-                        <img class="responsive-image" src="images/pictures/3t.jpg" alt="img">
-                        <em>Bread and Butter</em>
-                        <strong>$55.30</strong>
-                        <u class="ion-person"> por Enabled</u>
-                    </a>            
-                    <a class="swiper-slide" href="Ver-anuncio.html">
-                        <img class="responsive-image" src="images/pictures/2t.jpg" alt="img">
-                        <em>Frying Pans</em>
-                        <strong>$55.30</strong>
-                        <u class="ion-person"> por Enabled</u>
-                    </a>            
-                    <a class="swiper-slide" href="Ver-anuncio.html">
-                        <img class="responsive-image" src="images/pictures/1t.jpg" alt="img">
-                        <em>Fruit Pie</em>
-                        <strong>$55.30</strong>
-                        <u class="ion-person"> por Enabled</u>
-                    </a>
-                </div>
-            </div>        
+            
 
         <div class="decoration decoration-margins"></div>
         

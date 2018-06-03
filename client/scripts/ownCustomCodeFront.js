@@ -38,36 +38,6 @@ $(document).ready(function () {
         });
     });*/
 
-    $(".logOutButtonJWClass").click(function(){
 
-        logOut(function(seHaCerradoBien){
-            if (seHaCerradoBien)
-                $(location).attr('href', './Login.html');
-            else
-                console.log('No');
-
-                getMyAds(function(da){
-                    console.log(da)
-                });
-        });
-        
-    });
-
-    $("#registerButtonJW").click(function(){
-
-        valueRigesterNombre= $("#valueRigesterNombreJW").val();
-        valueRigesterUsarName= $("#valueRigesterUserJW").val();
-        valueRigesterEmail= $("#valueRigesterEmailJW").val();
-        valueRigesterPassword= $("#valueRigesterPassJW").val();
-        
-
-        insertUser(valueRigesterNombre, coord, valueRigesterUsarName, valueRigesterEmail, valueRigesterPassword, function(isCreatedOk) {
-            if (isCreatedOk){
-                $(location).attr('href', './profile.html');
-            }else
-                console.log('No');
-        });
-        
-    });
 
 })
