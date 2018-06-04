@@ -17,12 +17,43 @@ module.exports = function(Anuncio) {
                 error.statusCode = 409
                 next(error);
             }
-            else
-                next();
+            else{
+                var NodeGeocoder = require('node-geocoder');
+ 
+                var options = {
+                provider: 'google',
+                
+                // Optional depending on the providers
+                httpAdapter: 'https', // Default
+                apiKey: 'AIzaSyCajyKVMEbcYe6_2fsL8e_WRnqUQPkZ4lY', // for Mapquest, OpenCage, Google Premier
+                formatter: null         // 'gpx', 'string', ...
+                };
+                
+                var geocoder = NodeGeocoder(options);
+                
+                
+                geocoder.reverse({lat: context.args.data.location.lat, lon: context.args.data.location.lng}, function(err, res) {
+                    if (err === null)
+                        context.args.data.city = res[0].city;
+                    else 
+                        context.args.data.city = 'In World';
+                    next();
+                  });
+
+                
+
+
+
+            }
+                
 
         })
         
     });
+
+
+    //----------------------------------------------------------
+
 
     Anuncio.getMyAds = function(context, callback) {
         const usrLogId = context.req.accessToken.userId;
@@ -35,7 +66,9 @@ module.exports = function(Anuncio) {
         });
     }
 
-    Anuncio.GetByPaginatione = function(title, category, page, adsPerPage, position, callback) {
+    //---------------------------------------------------
+
+    Anuncio.GetByPaginatione = function(title = '', category = 0, page, adsPerPage, position = {"lat": 0, "lng": 0}, callback) {
 
         if (0 < page)
             page = ((page-1)*adsPerPage);
@@ -47,17 +80,21 @@ module.exports = function(Anuncio) {
             let ar = [];
 
             Anuncio.find({where: {titulo: {like: "%"+title+"%"}, categoriaId: {inq: filter(category, d, ar), location: {
-                near : position, }}},include: ['multimedia', 'solicitudes'], limit: adsPerPage, offset: page}, function(err, ad){
+                near : position, }}},include: ['usuario', 'multimedia', 'solicitudes'], limit: adsPerPage, offset: page}, function(err, Ads){
                 if (err)
                     callback(err);
 
-                callback(null, ad);
+                callback(null, Ads);
             });
         });
 
 
       };
 };
+
+
+
+
 
 const filter = (category, categoryArray, categoriesArrayGood) => {
 

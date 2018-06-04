@@ -26,6 +26,10 @@
       "type": "string",
       "required": true
     },
+    "city": {
+      "type": "string",
+      "required": false
+    },
     "date": {
       "type": "date",
       "required": true
@@ -95,7 +99,7 @@
         {
           "arg": "title",
           "type": "string",
-          "required": true,
+          "required": false,
           "description": "title of ad",
           "http": {
             "source": "query"
@@ -104,7 +108,7 @@
         {
           "arg": "category",
           "type": "number",
-          "required": true,
+          "required": false,
           "description": "category",
           "http": {
             "source": "query"
@@ -131,7 +135,7 @@
         {
           "arg": "position",
           "type": "object",
-          "required": true,
+          "required": false,
           "description": "current postion",
           "http": {
             "source": "query"
