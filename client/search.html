@@ -17,49 +17,23 @@
 <script type="text/javascript" src="scripts/plugins.js"></script>
 <script type="text/javascript" src="scripts/custom.js"></script>
 <script type="text/javascript" src="scripts/ownCustomCode.js"></script>
-<script type="text/javascript" src="scripts/ownCustomCodeFront.js"></script> 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-<script type="text/javascript" src="scripts/AngularFile.js"></script>
+<script type="text/javascript" src="scripts/Search/searchScripts.js"></script>
 
 </head>
 
 <body>
-<div id="page-transitions">
+<div id="page-transitions" ng-app="searchApp" ng-controller="searchCtrl">
     
 <div class="page-preloader page-preloader-dark">
     <div class="spinner"></div>
 </div>
     
 <div class="header header-dark">
-        <a href="index.html" class="header-logo">BUS<span class="color-red-dark">QUEDA</span></a>
-        <a href="index.html" class="header-icon header-icon-1 menu-bar-text-1 open-sidebar"><i class="ion-ios-arrow-left"></i></a>
+        <a href="index.html" target="_top" class="header-logo">BUS<span class="color-red-dark">QUEDA</span></a>
+        <a href="index.html" target="_top" class="header-icon header-icon-1 menu-bar-text-1 open-sidebar"><i class="ion-ios-arrow-left"></i></a>
 </div>
-    
-<!-- Main Small Icon Sidebar -->
-<div class="sidebar-menu sidebar-dark">
-    <div class="sidebar-menu-scroll">
-        <a href="index.html"><i class="ion-ios-star-outline"></i><em>Actualizar</em></a>       
-        <a href="Publish Ad 1.html"><i class="ion-ios-list-outline"></i><em>Publicar</em></a>       
-        <a href="profile.html"><i class="ion-ios-person-outline"></i><em>Mi Perfil</em></a>      
-        <a href="Mis-mensajes.html"><i class="ion-ios-email-outline"></i><em>Mensajes</em></a>       
-        <a href="Mis-anuncios.html"><i class="ion-ios-compose-outline"></i><em>Mis Anuncios</em></a>
-        <a href="Solicitudes.html"><i class="ion-ios-cart-outline"></i><em>Solicitudes</em></a>
-        <a href="Mis-favoritos.html"><i class="ion-ios-star-outline"></i><em>Mis Favoritos</em></a>       
-        <a data-submenus="sub1" href="#"><i class="ion-ios-gear-outline"></i><em>Configuracion</em></a> 
-    </div>
-</div>
-
-
-<!-- Configuracion Submenus -->
-<div class="submenu submenu-dark" id="sub1">
-    <div class="submenu-scroll">          
-        <a href="Login.html"><i class="ion-ios-unlocked-outline"></i><em>Iniciar Sesion</em></a>
-        <a href="Register.html"><i class="ion-ios-unlocked-outline"></i><em>Registrar</em></a>          
-        <a href="#" class="logOutButtonJWClass" ><i class="ion-ios-locked-outline"></i><em>Cerrar Sesion</em></a>
-        <a href="#"><i class="ion-help"></i><em>Ayuda</em></a>        
-    </div>
-</div>
-            
+                
 <div id="page-content" class="header-clear">
     <div id="page-content-scroll">
         <dir style="margin: 20px">
@@ -69,40 +43,24 @@
         <div class="one-half-responsive">
             <div class="content">
                 <div class="input-icon">
-                    <input type="text" class="input-text-box input-green-border" value="Con Las Plabras">
+                    <input type="text" class="input-text-box input-green-border" ng-model="searchBar" ng-blur="searchBlur()" value="">
                     <i class="ion-search"></i>
                 </div>
+
+                <div>Categoria selecionada {{currentCat}}</div>
+                <button ng-click="back()"> back </button>
                 <div class="select-box">
-                        <select >
-                            <option class="select-title" value="o0">Todas Las Categorias</option>
-                            <option value="o1">Option 1</option>
-                            <option value="o2">Option 2</option>
-                            <option value="o3">Option 3</option>
-                            <option value="o4">Option 4</option>
+                        <select ng-model="item" ng-change="update()" >
+                            <option data-ng-repeat="ca in categories track by $index" value={{ca.val}} >
+                                {{ca.cat}}
+                            </option>
                         </select>
                 </div>
-                <div class="select-box">
-                        <select>
-                            <option class="select-title" value="o0">SubCategorias</option>
-                            <option value="o1">Option 1</option>
-                            <option value="o2">Option 2</option>
-                            <option value="o3">Option 3</option>
-                            <option value="o4">Option 4</option>
-                        </select>
-                </div>
-                <div class="select-box">
-                        <select>
-                            <option class="select-title" value="o0">Ordenar por</option>
-                            <option value="o1">Option 1</option>
-                            <option value="o2">Option 2</option>
-                            <option value="o3">Option 3</option>
-                            <option value="o4">Option 4</option>
-                        </select>
-                </div>
-                <div class="input-icon">
-                        <input type="submit" style="background-color: #c0392b" class="input-text-box input-red-border" value="Buscar">
+
+                <a href="index.html" target="_top" class="input-icon">
+                        <input type="submit" style="background-color: #c0392b" ng-click="saveData()" class="input-text-box input-red-border" value="Buscar">
                         <i class="ion-android-done"></i>
-                </div>
+                </a>
             </div>
         </div>
        
@@ -111,7 +69,7 @@
         <div class="decoration decoration-margins"></div>
         
         <div class="footer footer-dark">
-            <a href="index.html" class="footer-logo scale-hover"></a>
+            <a href="index.html" target="_top" class="footer-logo scale-hover"></a>
             <p>
                 Simplicity and complexity packed into a beautiful, 
                 feature filled, powerful, gorgeous mobile template.

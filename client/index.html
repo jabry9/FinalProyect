@@ -40,7 +40,7 @@
             <em class="line-2"></em>
             <em class="line-3"></em>    
         </a>
-        <a href="search.html" class="header-icon header-icon-4"><i class="ion-search"></i></a>
+        <a href="search.html" target="_top" class="header-icon header-icon-4"><i class="ion-search"></i></a>
 </div>
     
 <!-- Main Small Icon Sidebar -->
@@ -76,6 +76,8 @@
         
         <div class="content full-top">
 
+                <div ng-show="muestraFiltroCategoria">{{categoriaName}}</div>
+                <div ng-show="muestraFiltroTitulo">{{titulo}}</div>
 
                 <div ng-repeat="x in records">
                         <img class="preload-image" data-original={{x.img}} alt="img" src={{x.img}}>

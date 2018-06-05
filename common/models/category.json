@@ -23,5 +23,33 @@
     }
   },
   "acls": [],
-  "methods": {}
+  "methods": {
+    "GetByParentCategory": {
+      "accepts": [
+        {
+          "arg": "parentCategory",
+          "type": "number",
+          "required": true,
+          "description": "title of ad",
+          "http": {
+            "source": "query"
+          }
+        }
+      ],
+      "returns": [
+        {
+          "arg": "categories",
+          "type": "array",
+          "root": true,
+          "description": "All categories whit parent categori same whirth passed"
+        }
+      ],
+      "description": "Get All categories whit parent categori same whirth passed",
+      "http": [
+        {
+          "path": "/getByParentCategory",
+          "verb": "get"
+        }
+      ]
+  }}
 }

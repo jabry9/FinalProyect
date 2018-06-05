@@ -4,12 +4,35 @@ var app = angular.module('indexApp', []);
 app.controller('indexCtrl', function ($scope, $http) {
 
     $scope.records = [];
-$scope.page = 0;
-
+    $scope.page = 0;
+    $scope.muestraFiltroTitulo = false;
+    $scope.muestraFiltroCategoria = false;
 
 
     $scope.estoyLogeado = false;
     $scope.noEstoyLogeado = !$scope.estoyLogeado;
+
+
+    $scope.titulo = '';
+
+    if (null !== sessionStorage.getItem("searchBar"));{
+        $scope.muestraFiltroTitulo = true;
+        $scope.titulo = sessionStorage.getItem("searchBar");
+    }
+
+    $scope.categoria = 0;
+
+    if (null !== sessionStorage.getItem("searchCate"));{
+        $scope.categoria = parseInt(sessionStorage.getItem("searchCate"));
+    }
+        
+    $scope.categoriaName = 0;
+
+    if (null !== sessionStorage.getItem("searchName"));{
+        $scope.muestraFiltroCategoria = true;
+        $scope.categoriaName = sessionStorage.getItem("searchName");
+    }
+    
 
     alredyLogged(function(isLogged){
         if (isLogged){
@@ -25,42 +48,30 @@ $scope.page = 0;
     });
 
 
-
-
-  
-
- 
-
-
     $scope.nextAds = function () {
 
 
-        $http.get(direction+"Anuncios/getByPaginatione?page="+$scope.page+"&adsPerPage=4")
+
+        $http.get(direction+"Anuncios/getByPaginatione?page="+$scope.page+"&adsPerPage=4&title="+$scope.titulo+"&category="+$scope.categoria)
         .then(function(response) {
-            console.log(response.data);
             response.data.map(e => {
-                
                 $scope.records.push({
                     img: e.multimedia[0],
                     titulo: e.titulo,
-                    description: e.description,
                     city: e.city,
+                    materialsInclude: e.materialsINC,
                     autor: e.usuario.username
                 });
-    
+  
+
                
             });
 
-            $scope.$apply();
+            
 
         });
         $scope.page++;
     }
-
-
-
-
-
 
     $scope.logOut = function () {
         logOut(function(correct){
