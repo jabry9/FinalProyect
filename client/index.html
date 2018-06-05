@@ -79,12 +79,12 @@
                 <div ng-show="muestraFiltroCategoria">{{categoriaName}}</div>
                 <div ng-show="muestraFiltroTitulo">{{titulo}}</div>
 
-                <div ng-repeat="x in records">
+                <a href="Ver-anuncio.html" target="_top" ng-click="saveAdd()" ng-repeat="x in records">
                         <img class="preload-image" data-original={{x.img}} alt="img" src={{x.img}}>
                         <strong>{{x.titulo}}</strong>
                         <em>{{x.description}}</em>
                         <u><i class="ion-ios-location"></i> {{x.city}} <i class="ion-social-euro"></i> {{x.presupuesto}}<i class="ion-person"> {{x.autor}}</i></u>
-                </div>  
+                </a>  
 
             <div class="thumb-layout thumb-layout-page">
 

@@ -1,4 +1,4 @@
-const direction = 'http://80.211.56.30:3000/api/'; 
+const direction = 'http://localhost:3000/api/'; 
 let coord = null;
 
 const setCookie = (cname, cvalue, exdays = 2) => {

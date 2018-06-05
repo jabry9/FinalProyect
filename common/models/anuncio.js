@@ -65,6 +65,27 @@ module.exports = function(Anuncio) {
             callback(null, Ads);
         });
     }
+    //---------------------------------------------------------------
+
+    Anuncio.afterRemote('getAd', function (context, anuncio, next) {
+
+        anuncio.ad.visitas = anuncio.ad.visitas + 1;
+        anuncio.ad.save();
+        console.log(anuncio.ad.visitas); 
+        next();
+    });
+
+    //-----------------------------------------------------
+
+    Anuncio.getAd = function(anuncioId, callback) {
+
+        Anuncio.findOne({where: {id: anuncioId},include: ['multimedia', 'solicitudes']}, function (err, Ads) {
+            if (err)
+                callback(err);
+      
+            callback(null, Ads);
+        });
+    }
 
     //---------------------------------------------------
 
