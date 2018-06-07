@@ -2,7 +2,7 @@
 
 module.exports = function(Anuncio) {
 
-    // Asignar como 'owner' de la lista que se va a crear, al usuario que solicita su creaciÃ³n
+    // Asignar como 'owner' de la lista que se va a crear, al usuario que solicita su creación
     Anuncio.beforeRemote('create', function (context, anuncio, next) {
         context.args.data.usuarioId = context.req.accessToken.userId;
         context.args.data.date = new Date();
@@ -40,6 +40,10 @@ module.exports = function(Anuncio) {
                     next();
                   });
 
+                
+
+
+
             }
                 
 
@@ -61,12 +65,12 @@ module.exports = function(Anuncio) {
             callback(null, Ads);
         });
     }
-//-----------------------------------------------------
+    //---------------------------------------------------------------
+
     Anuncio.afterRemote('getAd', function (context, anuncio, next) {
 
         anuncio.ad.visitas = anuncio.ad.visitas + 1;
         anuncio.ad.save();
-        console.log(anuncio.ad.visitas); 
         next();
     });
 
@@ -74,13 +78,14 @@ module.exports = function(Anuncio) {
 
     Anuncio.getAd = function(anuncioId, callback) {
 
-        Anuncio.findOne({where: {id: anuncioId},include: ['multimedia', 'solicitudes']}, function (err, Ads) {
+        Anuncio.findOne({where: {id: anuncioId},include: ['multimedia', 'solicitudes', 'usuario']}, function (err, Ads) {
             if (err)
                 callback(err);
       
             callback(null, Ads);
         });
     }
+
     //---------------------------------------------------
 
     Anuncio.GetByPaginatione = function(title = '', category = 0, page, adsPerPage, position = {"lat": 0, "lng": 0}, callback) {
