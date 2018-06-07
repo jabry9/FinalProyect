@@ -1,6 +1,8 @@
 var loopback = require('loopback');
 var boot = require('loopback-boot');
 
+var cors = require('cors')
+
 var http = require('http');
 var https = require('https');
 var sslConfig = require('./ssl-config');
@@ -14,6 +16,7 @@ app.start = function(httpOnly) {
   if (httpOnly === undefined) {
     httpOnly = process.env.HTTP;
   }
+app.options('*', cors());
   var server = null;
   if (!httpOnly) {
     var options = {

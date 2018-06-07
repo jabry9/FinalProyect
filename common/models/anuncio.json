@@ -172,7 +172,7 @@
         {
           "arg": "Ads",
           "type": "array",
-          "root": false,
+          "root": true,
           "description": "todos los anuncios del usuario loggeado"
         }
       ],
@@ -180,6 +180,33 @@
       "http": [
         {
           "path": "/getMyAds",
+          "verb": "get"
+        }
+      ]
+    },
+    "getAd": {
+      "accepts": [
+        {
+          "arg": "ads",
+          "type": "number",
+          "required": true,
+          "http": {
+            "source": "query"
+          }
+        }
+      ],
+      "returns": [
+        {
+          "arg": "ad",
+          "type": "object",
+          "root": false,
+          "description": "Un unico anuncio"
+        }
+      ],
+      "description": "un unico anuncio",
+      "http": [
+        {
+          "path": "/getAd",
           "verb": "get"
         }
       ]

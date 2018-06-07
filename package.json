@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "compression": "^1.0.3",
-    "cors": "^2.5.2",
+    "cors": "^2.8.4",
     "helmet": "^3.10.0",
     "loopback": "^3.19.0",
     "loopback-boot": "^2.6.5",
