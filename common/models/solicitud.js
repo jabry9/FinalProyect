@@ -9,13 +9,19 @@ module.exports = function(Solicitud) {
         Solicitud.app.models.Empresa.findOne({where: {usuarioId: usrLogId}}, function (err, empresa) {
             if (err)
                 next(err);
-            
+
+
             if (null === empresa){
-                var error = new Error('Can not create solicitud because user dont have have Empresa');
+                var error = new Error('Can not create solicitud because user dont have Empresa');
                 error.name = 'requestNotOk';
                 error.statusCode = 409
                 next(error);
-            }else {
+            }else if (empresa.credits <= 0){
+                var error = new Error('Can not create solicitud because Empresa dont have credits');
+                error.name = 'requestNotOk';
+                error.statusCode = 409
+                next(error);
+            } else  {
                 context.args.data.empresaId = empresa.id;
                 Solicitud.app.models.Anuncio.findOne({where: {id: context.args.data.anuncioId}}, function (err, anuncio) {
                     if (err)
@@ -38,6 +44,8 @@ module.exports = function(Solicitud) {
                                     error.statusCode = 409
                                     next(error);
                                 } else {
+                                    empresa.credits = empresa.credits -1;
+                                    empresa.save();
                                     next();
                                 }
                                 
@@ -50,6 +58,43 @@ module.exports = function(Solicitud) {
         });
 
     });
+
+    //-----------------------------------------------------------------------------
+
+    Solicitud.getIfSolicitudIsMy = function(context, anuncioId, callback) {
+        var usrLogId = context.req.accessToken.userId;
+        
+
+        Solicitud.app.models.Empresa.findOne({where: {usuarioId: usrLogId}}, function (err, empresa) {
+            if (err)
+                callback(err);
+            
+            if (null === empresa){
+                var error = new Error('Can not given solicitud because user dont have have Empresa');
+                error.name = 'requestNotOk';
+                error.statusCode = 409;
+                callback(error);
+            }else {
+
+                            Solicitud.findOne({where: {anuncioId: anuncioId, empresaId: empresa.id}}, function (err, solicitud) {
+                                if (err)
+                                callback(err);
+
+
+                                if (null === solicitud){
+                                    var error = new Error('Can not given solicitud because solicitud not exist exist');
+                                    error.name = 'requestNotOk';
+                                    error.statusCode = 404;
+                                    callback(error);
+                                } else {
+                                    callback(null, solicitud);
+                                }
+                                
+                            });
+                
+            }          
+        });
+    }
 
 
 };

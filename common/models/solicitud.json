@@ -45,7 +45,56 @@
       "principalType": "ROLE",
       "principalId": "$authenticated",
       "permission": "ALLOW"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY",
+      "property": "getIfSolicitudIsMy"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "getIfSolicitudIsMy"
     }
   ],
-  "methods": {}
+  "methods": {
+    "getIfSolicitudIsMy": {
+      "accepts": [
+        {
+          "arg": "context",
+          "type": "object",
+          "http": {
+            "source": "context"
+          }
+        },
+        {
+          "arg": "anuncioId",
+          "type": "number",
+          "required": true,
+          "http": {
+            "source": "query"
+          }
+        }
+      ],
+      "returns": [
+        {
+          "arg": "Solicitud",
+          "type": "object",
+          "root": false,
+          "description": "si ya hay una solicitud creada"
+        }
+      ],
+      "description": "si ya hay una solicitud creada",
+      "http": [
+        {
+          "path": "/getIfSolicitudIsMy",
+          "verb": "get"
+        }
+      ]
+    }
+  }
 }
