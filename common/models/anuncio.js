@@ -100,7 +100,7 @@ module.exports = function(Anuncio) {
             let ar = [];
 
             Anuncio.find({where: {titulo: {like: "%"+title+"%"}, categoriaId: {inq: filter(category, d, ar), location: {
-                near : position, }}},include: ['usuario', 'multimedia', 'solicitudes'], limit: adsPerPage, offset: page}, function(err, Ads){
+                near : position, }}},include: ['usuario', 'multimedia', 'solicitudes'], limit: adsPerPage, offset: page, order: 'date DESC'}, function(err, Ads){
                 if (err)
                     callback(err);
 

@@ -95,6 +95,33 @@
           "verb": "get"
         }
       ]
+    },
+    "getSolicitudWithEmpresa": {
+      "accepts": [
+        {
+          "arg": "anuncioId",
+          "type": "number",
+          "required": true,
+          "http": {
+            "source": "query"
+          }
+        }
+      ],
+      "returns": [
+        {
+          "arg": "Solicitud",
+          "type": "Array",
+          "root": true,
+          "description": "Devuelve los detalles de solicitudes de un anuncio"
+        }
+      ],
+      "description": "Devuelve los detalles de solicitudes de un anuncio",
+      "http": [
+        {
+          "path": "/getSolicitudWithEmpresa",
+          "verb": "get"
+        }
+      ]
     }
   }
 }

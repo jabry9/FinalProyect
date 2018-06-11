@@ -54,14 +54,6 @@
       "options": {
         "nestRemoting": true
       }
-    },
-    "profiler": {
-      "type": "belongsTo",
-      "model": "ProfilerCategory",
-      "foreignKey": "profiler",
-      "options": {
-        "nestRemoting": true
-      }
     }
   },
   "acls": [

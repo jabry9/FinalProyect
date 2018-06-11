@@ -6,6 +6,7 @@ module.exports = function(Empresa) {
     Empresa.beforeRemote('create', function (context, anuncio, next) {
         var usrLogId = context.req.accessToken.userId;
         context.args.data.usuarioId = usrLogId;
+        context.args.data.credits = 8;
 
         Empresa.findOne({where: {usuarioId: usrLogId}}, function (err, empresa) {
             if (err)

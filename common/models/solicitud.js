@@ -37,7 +37,6 @@ module.exports = function(Solicitud) {
                                 if (err)
                                     next(err);
 
-
                                 if (null !== solicitud){
                                     var error = new Error('Can not create solicitud because solicitud already exist');
                                     error.name = 'requestNotOk';
@@ -93,6 +92,27 @@ module.exports = function(Solicitud) {
                             });
                 
             }          
+        });
+    }
+
+    //----------------------------------------------------------------------------------------
+    Solicitud.getSolicitudWithEmpresa = function(anuncioId, callback) {
+        
+
+        Solicitud.find({where: {anuncioId: anuncioId}, include: ['empresa']}, function (err, solicitud) {
+            if (err)
+            callback(err);
+
+
+            if (null === solicitud){
+                var error = new Error('Can not given solicitud because solicitud not exist exist');
+                error.name = 'requestNotOk';
+                error.statusCode = 404;
+                callback(error);
+            } else {
+                callback(null, solicitud);
+            }
+            
         });
     }
 
