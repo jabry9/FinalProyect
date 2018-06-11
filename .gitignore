@@ -19,3 +19,4 @@ node_modules
 npm-debug.log
 ./server/config.local.js
 storage
+./server/server.js
