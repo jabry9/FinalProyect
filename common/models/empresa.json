@@ -54,16 +54,62 @@
       "options": {
         "nestRemoting": true
       }
-    },
-    "profiler": {
-      "type": "belongsTo",
-      "model": "ProfilerCategory",
-      "foreignKey": "profiler",
-      "options": {
-        "nestRemoting": true
-      }
     }
   },
-  "acls": [],
-  "methods": {}
+  "acls": [
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY",
+      "property": "getCurrentLogedEmpresa"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "getCurrentLogedEmpresa"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {
+    "getCurrentLogedEmpresa": {
+      "accepts": [
+        {
+          "arg": "context",
+          "type": "object",
+          "http": {
+            "source": "context"
+          }
+        }
+      ],
+      "returns": [
+        {
+          "arg": "Empresa",
+          "type": "object",
+          "root": false,
+          "description": "una empresa perteneciente a un usuario"
+        }
+      ],
+      "description": "una empresa perteneciente a un usuario",
+      "http": [
+        {
+          "path": "/getCurrentLogedEmpresa",
+          "verb": "get"
+        }
+      ]
+    }
+  }
 }

@@ -2,7 +2,7 @@
 
 module.exports = function(Anuncio) {
 
-    // Asignar como 'owner' de la lista que se va a crear, al usuario que solicita su creación
+    // Asignar como 'owner' de la lista que se va a crear, al usuario que solicita su creaci�n
     Anuncio.beforeRemote('create', function (context, anuncio, next) {
         context.args.data.usuarioId = context.req.accessToken.userId;
         context.args.data.date = new Date();
@@ -71,7 +71,6 @@ module.exports = function(Anuncio) {
 
         anuncio.ad.visitas = anuncio.ad.visitas + 1;
         anuncio.ad.save();
-        console.log(anuncio.ad.visitas); 
         next();
     });
 
@@ -79,7 +78,7 @@ module.exports = function(Anuncio) {
 
     Anuncio.getAd = function(anuncioId, callback) {
 
-        Anuncio.findOne({where: {id: anuncioId},include: ['multimedia', 'solicitudes']}, function (err, Ads) {
+        Anuncio.findOne({where: {id: anuncioId},include: ['multimedia', 'solicitudes', 'usuario']}, function (err, Ads) {
             if (err)
                 callback(err);
       
@@ -101,7 +100,7 @@ module.exports = function(Anuncio) {
             let ar = [];
 
             Anuncio.find({where: {titulo: {like: "%"+title+"%"}, categoriaId: {inq: filter(category, d, ar), location: {
-                near : position, }}},include: ['usuario', 'multimedia', 'solicitudes'], limit: adsPerPage, offset: page}, function(err, Ads){
+                near : position, }}},include: ['usuario', 'multimedia', 'solicitudes'], limit: adsPerPage, offset: page, order: 'date DESC'}, function(err, Ads){
                 if (err)
                     callback(err);
 

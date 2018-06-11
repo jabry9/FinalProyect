@@ -1,6 +1,6 @@
 {
   "restApiRoot": "/api",
-  "host": "0.0.0.0",
+  "host": "https://waja.ovh",
   "port": 3000,
   "remoting": {
     "context": false,
